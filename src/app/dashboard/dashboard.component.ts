@@ -9,6 +9,7 @@ export class DashboardComponent implements OnInit {
     careers;
     education;
     profile;
+    skills;
     stats = [];
 
     constructor(private http: HttpClient) {}
@@ -25,6 +26,7 @@ export class DashboardComponent implements OnInit {
                 totalMonths += item.months;
             });
             this.profile = response.profile;
+            this.skills = response.skills;
             this.stats.push({
                 description: 'Total work experience',
                 metric: 'Years',

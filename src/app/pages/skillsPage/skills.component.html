@@ -1,0 +1,33 @@
+
+<div class="card">
+    <div class="card-header text-white bg-warning">Skills</div>
+    <div class="card-body">
+        <ul class="nav nav-tabs nav-fill">
+            <li class="nav-item">
+                <a class="nav-link text-warning" (click)="setList('technologies')">Technologies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" (click)="setList('services')">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" (click)="setList('industries')">Industries</a>
+            </li>
+        </ul>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">&nbsp;</th>
+                    <th scope="col">level</th>
+                    <th scope="col">years</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of list">
+                    <td class="text-warning">{{ item.name }}</td>
+                    <td class="text-center">{{ item.level }}</td>
+                    <td class="text-center">{{ item.years }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

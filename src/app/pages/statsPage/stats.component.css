@@ -20,3 +20,7 @@ h2 small {
     font-family: 'Questrial', sans-serif;
     padding: 8px;
 }
+
+.row {
+    margin: 15px;
+}

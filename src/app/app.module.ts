@@ -10,6 +10,7 @@ import { WorkComponent } from './pages/workPage/work.component';
 import { ProfileComponent } from './pages/profilePage/profile.component';
 import { StatsComponent } from './pages/statsPage/stats.component';
 import { EducationComponent } from './pages/educationPage/education.component';
+import { SkillsComponent } from './pages/skillsPage/skills.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { EducationComponent } from './pages/educationPage/education.component';
     DashboardComponent,
     EducationComponent,
     ProfileComponent,
+    SkillsComponent,
     StatsComponent,
     WorkComponent
   ],

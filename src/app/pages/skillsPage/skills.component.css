@@ -1,4 +1,8 @@
 
+td {
+    font-family: 'Questrial', sans-serif;
+}
+
 .block {
     background-color: white;
     border-bottom: 1px solid #ddd;
@@ -22,6 +26,8 @@
     font-family: 'Questrial', sans-serif;
 }
 
-.nav-item:hover {
-    background-color: #eee;
+.nav-link {
+    cursor: pointer;
+    font-family: 'Questrial', sans-serif;
+    font-weight: 600;
 }

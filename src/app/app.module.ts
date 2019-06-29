@@ -9,11 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { WorkComponent } from './pages/workPage/work.component';
 import { ProfileComponent } from './pages/profilePage/profile.component';
 import { StatsComponent } from './pages/statsPage/stats.component';
+import { EducationComponent } from './pages/educationPage/education.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    EducationComponent,
     ProfileComponent,
     StatsComponent,
     WorkComponent

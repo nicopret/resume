@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class DashboardComponent implements OnInit {
 
     careers;
+    education;
     profile;
     stats = [];
 
@@ -16,6 +17,7 @@ export class DashboardComponent implements OnInit {
         this.http.get('assets/resume.json').subscribe((response: any) => {
             let totalMonths = 0;
             this.careers = response.careers;
+            this.education = response.education;
             this.careers.forEach((item) => {
                 item.dateEnd = item.dateEnd ? this._calcDate(item.dateEnd) : new Date();
                 item.dateStart = item.dateStart ? this._calcDate(item.dateStart) : new Date();

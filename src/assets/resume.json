@@ -53,6 +53,75 @@
         "dateStart": "2001-03-01",
         "position": "Javascript Developer"
     }],
+    "education": [{
+        "institution": "Udemy",
+        "name": "Bash scripting",
+        "year": 2018
+    }, {
+        "institution": "Coursera",
+        "name": "Blockchain Specialization",
+        "year": 2018
+    }, {
+        "institution": "Coursera",
+        "name": "Economics of money and banking",
+        "year": 2018
+    }, {
+        "institution": "Coursera",
+        "name": "The global finance crisis",
+        "year": 2018
+    }, {
+        "institution": "Coursera",
+        "name": "Private equity and venture capital",
+        "year": 2017
+    }, {
+        "institution": "Coursera",
+        "name": "Sports and society",
+        "year": 2016
+    }, {
+        "institution": "Coursera",
+        "name": "Using databases with Python",
+        "year": 2016
+    }, {
+        "institution": "Coursera",
+        "name": "HTML, CSS and JavaScript",
+        "year": 2015
+    }, {
+        "institution": "Coursera",
+        "name": "Introduction to big data",
+        "year": 2015
+    }, {
+        "institution": "Coursera",
+        "name": "Introduction to game design",
+        "year": 2014
+    }, {
+        "institution": "Coursera",
+        "name": "Using Python to access web data",
+        "year": 2014
+    }, {
+        "institution": "Coursera",
+        "name": "Developing innovative ideas for new companies",
+        "year": 2014
+    }, {
+        "institution": "Coursera",
+        "name": "Critical thinking in global challenges",
+        "year": 2013
+    }, {
+        "institution": "Coursera",
+        "name": "Leading strategic innovation in organizations",
+        "year": 2013
+    }, {
+        "institution": "Coursera",
+        "name": "Surviving disruptive technologies",
+        "year": 2013
+    }, {
+        "institution": "Coursera",
+        "name": "Building an information risk management toolkit",
+        "year": 2013
+    }, {
+        "institution": "Coursera",
+        "name": "Designing and executing information secrity strategies",
+        "year": 2013
+    }],
     "profile": {
         "contact": [{
             "icon": "fa fa-envelope-o",

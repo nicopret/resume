@@ -1,6 +1,9 @@
 
 <div class="row">
-    <app-profile class="col-4" [data]="profile"></app-profile>
+    <div class="col-4">
+        <app-profile [data]="profile"></app-profile>
+        <app-education [data]="education"></app-education>
+    </div>
     <div class="col-8">
         <div class="row bg-light"><app-stats [data]="stats"></app-stats></div>
         <div class="row">

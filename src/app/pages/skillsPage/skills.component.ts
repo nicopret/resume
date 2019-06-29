@@ -1,16 +1,16 @@
-import { Component, Input, OnInit, AfterContentInit } from "@angular/core";
+import { Component, Input, OnInit, AfterContentInit, OnChanges } from "@angular/core";
 
 @Component({
     selector: 'app-skills',
     templateUrl: './skills.component.html',
     styleUrls: [ './skills.component.css' ]
 })
-export class SkillsComponent implements AfterContentInit {
+export class SkillsComponent implements OnChanges {
     @Input() data;
 
     list: [];
 
-    ngAfterContentInit() {
+    ngOnChanges() {
         this.setList('technologies');
     }
 

@@ -37,6 +37,11 @@ export class DashboardComponent implements OnInit {
                 metric: 'Courses',
                 type: 'secondary',
                 value: this.education.length
+            }, {
+                description: 'Technology',
+                metric: 'Skills',
+                type: 'warning',
+                value: this.skills.technologies.length
             });
         });
     }

@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 $info-color: #17a2b8;
 $secondary-color: #6c757d;
+$warning-color: #ffc107;
 
 .bg-info-dark {
     background-color: darken($info-color, 10%);
@@ -8,6 +9,10 @@ $secondary-color: #6c757d;
 
 .bg-secondary-dark {
     background-color: darken($secondary-color, 10%);
+}
+
+.bg-warning-dark {
+    background-color: darken($warning-color, 10%);
 }
 
 .card-header {

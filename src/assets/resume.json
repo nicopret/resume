@@ -2,56 +2,123 @@
     "careers": [{
         "company": "PBT Group",
         "dateStart": "2017-03-01",
-        "position": "Senior Development Lead"
+        "position": "Senior Development Lead",
+        "projects": [{
+            "name": "Mobile application"
+        }]
     }, {
         "company": "REDi",
         "dateEnd": "2017-02-28",
         "dateStart": "2014-05-01",
-        "position": "Full-Stack Engineer"
+        "position": "Full-Stack Engineer",
+        "projects": [{
+            "name": "Property listing website"
+        }, {
+            "name": "Website administration application"
+        }, {
+            "name": "Integration server"
+        }]
     }, {
         "dateEnd": "2014-04-30",
         "dateStart": "2013-05-01",
-        "position": "Digital Strategist"
+        "position": "Digital Strategist",
+        "projects": [{
+            "name": "AR proof of concept"
+        }, {
+            "name": "Media rich advertising site"
+        }]
     }, {
         "company": "Old Mutual",
         "dateEnd": "2013-04-30",
         "dateStart": "2012-06-01",
-        "position": "Technical Architect"
+        "position": "Technical Architect",
+        "projects": [{
+            "name": "Major Documentum upgrade"
+        }]
     }, {
         "company": "Britehouse SSD",
         "dateEnd": "2012-05-31",
         "dateStart": "2011-09-01",
-        "position": "Solutions Architect"
+        "position": "Solutions Architect",
+        "projects": [{
+            "name": "PetroSA upgrade and enhancement"
+        }]
     }, {
         "company": "EMC",
         "dateEnd": "2010-10-31",
         "dateStart": "2009-06-30",
-        "position": "Solutions Architect"
+        "position": "Solutions Architect",
+        "projects": [{
+            "name": "Telkom document capture project"
+        }, {
+            "name": "Umgeni water solution design"
+        }]
     }, {
         "company": "Zilvermine IT Solutions",
         "dateEnd": "2009-05-31",
         "dateStart": "2008-03-01",
-        "position": "Technical Architect"
+        "position": "Technical Architect",
+        "projects": [{
+            "name": "Documentum solution for client biometrics"
+        }]
     }, {
         "company": "Old Mutual",
         "dateEnd": "2008-02-28",
         "dateStart": "2005-06-01",
-        "position": "Technical Architect"
+        "position": "Technical Architect",
+        "projects": [{
+            "name": "Various Documentum upgrades"
+        }, {
+            "name": "Implementation of reporting and admin functions"
+        }]
     }, {
         "company": "Waymark Infotech",
         "dateEnd": "2005-05-31",
         "dateStart": "2004-03-01",
-        "position": "Senior Documentum Developer"
+        "position": "Senior Documentum Developer",
+        "projects": [{
+            "name": "DTI process automation"
+        }]
     }, {
         "company": "Discovery Health",
         "dateEnd": "2004-02-28",
         "dateStart": "2002-04-01",
-        "position": "Documentum Developer"
+        "position": "Documentum Developer",
+        "projects": [{
+            "name": "Web content development and administration"
+        }]
     }, {
         "company": "Discovery Health",
         "dateEnd": "2002-03-31",
         "dateStart": "2001-03-01",
-        "position": "Javascript Developer"
+        "position": "Javascript developer",
+        "projects": [{
+            "name": "Website development and optimisation"
+        }]
+    }, {
+        "company": "Bank of Athens",
+        "dateEnd": "2000-05-30",
+        "dateStart": "2000-02-01",
+        "position": "Cobol consultant",
+        "projects": [{
+            "name": "Implement date changes for tax system"
+        }]
+    }, {
+        "company": "Teljoy",
+        "dateEnd": "2000-01-31",
+        "dateStart": "1998-02-01",
+        "position": "Cobol developer",
+        "projects": [{
+            "name": "Various reports and system maintenance"
+        }]
+    }, {
+        "company": "AS Transmissions and steering",
+        "dateEnd": "1998-01-31",
+        "dateStart": "1996-02-01",
+        "position": "Junior developer",
+        "projects": [{
+            "name": "System enhancement and report writing"
+        }]
     }],
     "education": [{
         "institution": "Udemy",

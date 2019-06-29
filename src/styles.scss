@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 $info-color: #17a2b8;
 $secondary-color: #6c757d;
+$success-color: #28a745;
 $warning-color: #ffc107;
 
 .bg-info-dark {
@@ -9,6 +10,10 @@ $warning-color: #ffc107;
 
 .bg-secondary-dark {
     background-color: darken($secondary-color, 10%);
+}
+
+.bg-success-dark {
+    background-color: darken($success-color, 10%);
 }
 
 .bg-warning-dark {

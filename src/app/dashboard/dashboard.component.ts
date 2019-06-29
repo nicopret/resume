@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
         this.http.get('assets/resume.json').subscribe((response: any) => {
             let totalMonths = 0;
+            let totalProjects = 0;
             this.careers = response.careers;
             this.education = response.education;
             this.careers.forEach((item) => {
@@ -24,6 +25,7 @@ export class DashboardComponent implements OnInit {
                 item.dateStart = item.dateStart ? this._calcDate(item.dateStart) : new Date();
                 item.months = this._calcMonths(item.dateStart, item.dateEnd);
                 totalMonths += item.months;
+                totalProjects += item.projects ? item.projects.length : 0;
             });
             this.profile = response.profile;
             this.skills = response.skills;
@@ -42,6 +44,11 @@ export class DashboardComponent implements OnInit {
                 metric: 'Skills',
                 type: 'warning',
                 value: this.skills.technologies.length
+            }, {
+                description: 'Successfully delivered',
+                metric: 'Projects',
+                type: 'success',
+                value: totalProjects
             });
         });
     }

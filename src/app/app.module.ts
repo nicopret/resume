@@ -8,12 +8,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WorkComponent } from './pages/workPage/work.component';
 import { ProfileComponent } from './pages/profilePage/profile.component';
+import { StatsComponent } from './pages/statsPage/stats.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     ProfileComponent,
+    StatsComponent,
     WorkComponent
   ],
   imports: [

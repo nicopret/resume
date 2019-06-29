@@ -1,0 +1,22 @@
+
+h2 {
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 3.5rem;
+    padding-left: 8px;
+}
+
+h2 small {
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.5rem;
+    margin-left: 12px;
+}
+
+.card {
+    max-width: 250px;
+    min-width: 250px;
+}
+
+.card-footer {
+    font-family: 'Questrial', sans-serif;
+    padding: 8px;
+}

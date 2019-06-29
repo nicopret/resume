@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+$info-color: #17a2b8;
+
+.bg-info-dark {
+    background-color: darken($info-color, 10%);
+}
 
 .card-header {
     font-family: 'Orbitron', sans-serif;

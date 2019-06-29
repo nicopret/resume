@@ -1,0 +1,16 @@
+
+<div class="card">
+    <div class="card-header text-white bg-dark">{{ data.fullName }}</div>
+    <div class="card-body text-center">
+        <img class="rounded-circle" src="assets/{{ data.image }}" alt="Nico Pretorius Profile Image">
+        <div class="card-text">
+            <h4 class="text-dark">{{ data.title }}</h4>
+        </div>
+    </div>
+    <div class="card-footer bg-white d-flex">
+        <div class="col text-center" *ngFor="let item of data.contact">
+            <a href="mailto: {{ item.link }}" *ngIf="item.type == 'email'"><i class="{{ item.icon }}"></i></a>
+            <a href="{{ item.link }}" *ngIf="item.type == 'link'" target="_blank"><i class="{{ item.icon }}"></i></a>
+        </div>
+    </div>
+</div>

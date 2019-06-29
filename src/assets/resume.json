@@ -1,0 +1,74 @@
+{
+    "careers": [{
+        "company": "PBT Group",
+        "dateStart": "2017-03-01",
+        "position": "Senior Development Lead"
+    }, {
+        "company": "REDi",
+        "dateEnd": "2017-02-28",
+        "dateStart": "2014-05-01",
+        "position": "Full-Stack Engineer"
+    }, {
+        "dateEnd": "2014-04-30",
+        "dateStart": "2013-05-01",
+        "position": "Digital Strategist"
+    }, {
+        "company": "Old Mutual",
+        "dateEnd": "2013-04-30",
+        "dateStart": "2012-06-01",
+        "position": "Technical Architect"
+    }, {
+        "company": "Britehouse SSD",
+        "dateEnd": "2012-05-31",
+        "dateStart": "2011-09-01",
+        "position": "Solutions Architect"
+    }, {
+        "company": "EMC",
+        "dateEnd": "2010-10-31",
+        "dateStart": "2009-06-30",
+        "position": "Solutions Architect"
+    }, {
+        "company": "Zilvermine IT Solutions",
+        "dateEnd": "2009-05-31",
+        "dateStart": "2008-03-01",
+        "position": "Technical Architect"
+    }, {
+        "company": "Old Mutual",
+        "dateEnd": "2008-02-28",
+        "dateStart": "2005-06-01",
+        "position": "Technical Architect"
+    }, {
+        "company": "Waymark Infotech",
+        "dateEnd": "2005-05-31",
+        "dateStart": "2004-03-01",
+        "position": "Senior Documentum Developer"
+    }, {
+        "company": "Discovery Health",
+        "dateEnd": "2004-02-28",
+        "dateStart": "2002-04-01",
+        "position": "Documentum Developer"
+    }, {
+        "company": "Discovery Health",
+        "dateEnd": "2002-03-31",
+        "dateStart": "2001-03-01",
+        "position": "Javascript Developer"
+    }],
+    "profile": {
+        "contact": [{
+            "icon": "fa fa-envelope-o",
+            "link": "info@nicopretorius.com",
+            "type": "email"
+        }, {
+            "icon": "fa fa-linkedin",
+            "link": "https://www.linkedin.com/in/nicopretorius/",
+            "type": "link"
+        }, {
+            "icon": "fa fa-twitter",
+            "link": "https://twitter.com/nicopreto",
+            "type": "link"
+        }],
+        "fullName": "Nico Pretorius",
+        "image": "nico.jpg",
+        "title": "Technology Whisperer"
+    }
+}

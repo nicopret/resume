@@ -1,0 +1,13 @@
+
+.card-footer {
+    font-size: 200%;
+}
+
+.card-text {
+    font-family: 'Questrial', sans-serif;
+    font-weight: 600;
+}
+
+.card-text h4 {
+    padding-top: 12px;
+}

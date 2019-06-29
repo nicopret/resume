@@ -1,0 +1,23 @@
+
+.block {
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    cursor: default;
+    padding: 12px;
+}
+
+.block:hover {
+    background-color: #eee;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.card-text {
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-text p {
+    font-family: 'Questrial', sans-serif;
+}

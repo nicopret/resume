@@ -1,8 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 $info-color: #17a2b8;
+$secondary-color: #6c757d;
 
 .bg-info-dark {
     background-color: darken($info-color, 10%);
+}
+
+.bg-secondary-dark {
+    background-color: darken($secondary-color, 10%);
 }
 
 .card-header {

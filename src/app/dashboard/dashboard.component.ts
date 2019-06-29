@@ -30,6 +30,11 @@ export class DashboardComponent implements OnInit {
                 metric: 'Years',
                 type: 'info',
                 value: Math.floor(totalMonths / 12)
+            }, {
+                description: 'Distance learning',
+                metric: 'Courses',
+                type: 'secondary',
+                value: this.education.length
             });
         });
     }

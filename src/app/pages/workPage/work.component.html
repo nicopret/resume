@@ -4,8 +4,8 @@
     <div class="card-body">
         <div class="card-text">
             <div class="block" *ngFor="let item of data">
-                <h4 class="text-info">{{ item.position }}</h4>
-                <h5 class="text-muted">{{ item.company }}<small class="text-info float-right">{{ item.months }} Months</small></h5>
+                <h5 class="text-info">{{ item.position }}</h5>
+                <h6 class="text-muted">{{ item.company }}<small class="text-info float-right">{{ item.months }} Months</small></h6>
                 <p class="text-muted">{{ item.dateStart | date: 'MMM yyyy' }} - {{ item.dateEnd | date: 'MMM yyyy' }}</p>
             </div>
         </div>

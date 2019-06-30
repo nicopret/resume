@@ -228,7 +228,7 @@
             { "name": "Team mentoring", "level": 4, "years": 8 }
         ],
         "technologies": [
-            { "name": "Bash scripting (automation)", "level": 2, "years": 2 },
+            { "name": "Bash scripting", "level": 2, "years": 2 },
             { "name": "CSS", "level": 3, "years": 10 },
             { "name": "Design patterns", "level": 3, "years": 10 },
             { "name": "HTML", "level": 3, "years": 10 },

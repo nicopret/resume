@@ -1,4 +1,8 @@
 
+.gutter {
+    margin-bottom: 15px;
+}
+
 .no-padding {
     padding: 0;
 }

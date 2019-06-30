@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-    templateUrl: './dashboard.component.html'
+    templateUrl: './dashboard.component.html',
+    styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
 

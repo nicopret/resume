@@ -1,14 +1,27 @@
 
-<div class="row">
-    <div class="col-4">
-        <app-profile [data]="profile"></app-profile>
-        <app-education [data]="education"></app-education>
-    </div>
-    <div class="col-8">
-        <div class="row"><app-stats [data]="stats"></app-stats></div>
-        <div class="row">
-            <app-skills class="col" [data]="skills"></app-skills>
-            <app-work-experience class="col" [data]="careers"></app-work-experience>
+<div class="container-fluid d-none d-md-block">
+    <div class="row">
+        <div class="col-md-3">
+            <app-profile [data]="profile"></app-profile>
+            <app-education [data]="education"></app-education>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <app-stats class="col" [data]="stats"></app-stats>
+            </div>
+            <div class="row">
+                <app-skills class="col" [data]="skills"></app-skills>
+                <app-work-experience class="col" [data]="careers"></app-work-experience>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="container d-md-none no-padding">
+    <div class="col no-padding"><app-profile [data]="profile"></app-profile></div>
+    <div class="col no-padding"><app-stats [data]="stats"></app-stats></div>
+    <div class="col no-padding"><app-skills [data]="skills"></app-skills></div>
+    <div class="col no-padding"><app-work-experience [data]="careers"></app-work-experience></div>
+    <div class="col no-padding"><app-education [data]="education"></app-education></div>
+    <br><br><br><br><br>
 </div>

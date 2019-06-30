@@ -1,6 +1,19 @@
 
-<div class="row">
-    <div *ngFor="let item of data">
+<div class="container-fluid d-none d-md-block">
+    <div class="row">
+        <div class="col" *ngFor="let item of data">
+            <div class="card">
+                <div class="card-heading text-white" [ngClass]="{'bg-info': item.type == 'info', 'bg-secondary': item.type == 'secondary', 'bg-success': item.type == 'success', 'bg-warning': item.type == 'warning'}">
+                    <h2>{{ item.value }}<small>{{ item.metric }}</small></h2>
+                </div>
+                <div class="card-footer text-white" [ngClass]="{'bg-info-dark': item.type == 'info', 'bg-secondary-dark': item.type == 'secondary', 'bg-success-dark': item.type == 'success', 'bg-warning-dark': item.type == 'warning'}">{{ item.description }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container no-padding d-md-none">
+    <div class="col no-padding" *ngFor="let item of data">
         <div class="card">
             <div class="card-heading text-white" [ngClass]="{'bg-info': item.type == 'info', 'bg-secondary': item.type == 'secondary', 'bg-success': item.type == 'success', 'bg-warning': item.type == 'warning'}">
                 <h2>{{ item.value }}<small>{{ item.metric }}</small></h2>

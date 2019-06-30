@@ -11,16 +11,36 @@ h2 small {
     margin-left: 12px;
 }
 
-.card {
-    max-width: 250px;
-    min-width: 250px;
-}
-
 .card-footer {
     font-family: 'Questrial', sans-serif;
     padding: 8px;
 }
 
+.col {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.col:first-of-type {
+    padding-left: 0;
+}
+
+.col:last-of-type {
+    padding-right: 0;
+}
+
+.container-fluid {
+    margin-bottom: 15px;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.no-padding {
+    margin: 0;
+    padding: 0;
+}
+
 .row {
-    margin: 15px;
+    margin-right: 0;
+    padding-right: 0;
 }

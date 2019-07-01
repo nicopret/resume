@@ -2,21 +2,35 @@
     "careers": [{
         "company": "PBT Group",
         "dateStart": "2017-03-01",
+        "industry": "Banking",
         "position": "Senior Development Lead",
         "projects": [{
-            "name": "Mobile application"
+            "name": "Mobile application",
+            "project": [ "Agile", "Kanban", "Scrum" ],
+            "services": [ "Architecture", "Docker", "Microservices", "Springboot", "Swagger" ],
+            "technologies": [ "CSS", "HTML", "Java", "JavaScript", "Kendo" ]
         }]
     }, {
         "company": "REDi",
         "dateEnd": "2017-02-28",
         "dateStart": "2014-05-01",
+        "industry": "Property",
         "position": "Full-Stack Engineer",
         "projects": [{
-            "name": "Property listing website"
+            "name": "Property listing website",
+            "project": [ "Agile", "Scrum" ],
+            "services": [ "Architecture", "AWS", "SQL Server", "Tomcat", "Virtualization" ],
+            "technologies": [ "Angular", "CSS", "HTML", "Java", "JavaScript" ]
         }, {
-            "name": "Website administration application"
+            "name": "Website administration application",
+            "project": [ "Agile", "Scrum" ],
+            "services": [ "Architecture", "AWS", "SQL Server", "Tomcat", "Virtualization" ],
+            "technologies": [ "Angular", "CSS", "HTML", "Java", "JavaScript" ]
         }, {
-            "name": "Integration server"
+            "name": "API integration server",
+            "project": [ "Agile", "Scrum" ],
+            "services": [ "Architecture", "AWS", "Microservices", "Springboot", "Swagger" ],
+            "technologies": [ "Java", "JavaScript" ]
         }]
     }, {
         "dateEnd": "2014-04-30",

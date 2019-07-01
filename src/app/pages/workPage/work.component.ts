@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
     selector: 'app-work-experience',
@@ -7,4 +7,13 @@ import { Component, Input } from "@angular/core";
 })
 export class WorkComponent {
     @Input() data;
+    @Output() filterData = new EventEmitter<any>();
+
+    filter(category, skill) {
+        this.filterData.next({ category, skill });
+    }
+
+    toggleDisplay(item) {
+        item.detail = !item.detail;
+    }
 }

@@ -3,10 +3,24 @@
     <div class="card-header text-white bg-info">Work experience</div>
     <div class="card-body">
         <div class="card-text">
-            <div class="block" *ngFor="let item of data">
+            <div class="block" *ngFor="let item of data" (click)="toggleDisplay(item)">
                 <h5 class="text-info">{{ item.position }}</h5>
                 <h6 class="text-muted">{{ item.company }}<small class="text-info float-right">{{ item.months }} Months</small></h6>
-                <p class="text-muted">{{ item.dateStart | date: 'MMM yyyy' }} - {{ item.dateEnd | date: 'MMM yyyy' }}</p>
+                <div class="d-flex" style="width: 100%">
+                    <p class="text-muted">{{ item.dateStart | date: 'MMM yyyy' }} - {{ item.dateEnd | date: 'MMM yyyy' }}</p>
+                    <p class="position-right"><i class="fa fa-plus text-muted" *ngIf="!item.detail"></i><i class="fa fa-minus text-muted" *ngIf="item.detail"></i></p>
+                </div>
+                <div *ngIf="item.detail">
+                    <p><span class="badge badge-secondary" (click)="filter('industries', item.industry)">{{ item.industry }}</span></p>
+                    <div *ngFor="let project of item.projects">
+                        <p class="text-info bigger">{{ project.name }}</p>
+                        <div class="left-gutter">
+                            <p class="text-muted">Project: <span class="badge badge-secondary" *ngFor="let badge of project.project" (click)="filter('project', badge)">{{ badge }}</span></p>
+                            <p class="text-muted">Services: <span class="badge badge-secondary" *ngFor="let badge of project.services" (click)="filter('services', badge)">{{ badge }}</span></p>
+                            <p class="text-muted">Technologies: <span class="badge badge-secondary" *ngFor="let badge of project.technologies" (click)="filter('technologies', badge)">{{ badge }}</span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

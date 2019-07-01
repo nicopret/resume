@@ -25,3 +25,7 @@ $warning-color: #ffc107;
     font-size: 22px;
     font-weight: 600;
 }
+
+.warning-darker {
+    color: darken($warning-color, 10%);
+}

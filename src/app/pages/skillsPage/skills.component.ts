@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, AfterContentInit, OnChanges, ViewChild } from "@angular/core";
+import { Component, Input, OnChanges, ViewChild, Output, EventEmitter } from "@angular/core";
 
 import { Chart } from 'chart.js';
 
@@ -10,15 +10,29 @@ import { Chart } from 'chart.js';
 export class SkillsComponent implements OnChanges {
     @ViewChild('lineChart') private chartRef;
     @Input() data;
+    @Output() select = new EventEmitter<any>();
 
+    category;
     chart: any;
     list: [];
 
     ngOnChanges() {
+        if (this.data) {
+            Object.keys(this.data).forEach((key) => {
+                this.data[key].forEach((item) => {
+                    item.years = Math.ceil(item.months / 12);
+                });
+            });
+        }
         this.setList('technologies');
     }
 
+    selectSkill(skill) {
+        this.select.next({ category: this.category, skill });
+    }
+
     setList(item) {
+        this.category = item;
         this.list = this.data ? this.data[item] : [];
         this.chart = new Chart(this.chartRef.nativeElement, {
             type: 'bar',

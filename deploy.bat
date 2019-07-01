@@ -1,5 +1,5 @@
 
-set bucket=[bucket]
+set bucket=nicopretorius.com
 
 call npm run build
 

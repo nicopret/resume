@@ -12,8 +12,8 @@
                 <app-stats class="col" [data]="stats"></app-stats>
             </div>
             <div class="row">
-                <app-skills class="col" [data]="skills"></app-skills>
-                <app-work-experience class="col" [data]="careers"></app-work-experience>
+                <app-skills class="col" [data]="skills" (select)="filter($event)"></app-skills>
+                <app-work-experience class="col" [data]="careers" (filterData)="filter($event)"></app-work-experience>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
     <div class="col no-padding gutter"><app-profile [data]="profile"></app-profile></div>
     <div class="col no-padding gutter"><app-stats [data]="stats"></app-stats></div>
     <div class="col no-padding gutter"><app-skills [data]="skills"></app-skills></div>
-    <div class="col no-padding gutter"><app-work-experience [data]="careers"></app-work-experience></div>
+    <div class="col no-padding gutter"><app-work-experience [data]="careers" (filterData)="filter($event)"></app-work-experience></div>
     <div class="col no-padding gutter"><app-education [data]="education"></app-education></div>
     <br><br><br><br><br>
 </div>

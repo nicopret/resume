@@ -1,5 +1,5 @@
 
-<div class="card">
+<div class="card" *ngIf="data">
     <div class="card-header text-white bg-dark">{{ data.fullName }}</div>
     <div class="card-body text-center">
         <img class="img-fluid rounded-circle" src="assets/{{ data.image }}" alt="Nico Pretorius Profile Image">

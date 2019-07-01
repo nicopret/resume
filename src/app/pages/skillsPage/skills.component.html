@@ -14,6 +14,9 @@
                 <a class="nav-link text-warning" (click)="setList('services')">Services</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link text-warning" (click)="setList('project')">Projects</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-warning" (click)="setList('industries')">Industries</a>
             </li>
         </ul>
@@ -21,15 +24,13 @@
             <thead>
                 <tr>
                     <th scope="col">&nbsp;</th>
-                    <th scope="col">level</th>
-                    <th scope="col">years</th>
+                    <th scope="col text-right" style="text-align: right">years</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of list">
-                    <td class="text-warning"><h5>{{ item.name }}</h5></td>
-                    <td class="text-center">{{ item.level }}</td>
-                    <td class="text-center">{{ item.years }}</td>
+                    <td class="text-warning"><h5 (click)="selectSkill(item.name)">{{ item.name }}</h5></td>
+                    <td class="text-right">{{ item.years }}</td>
                 </tr>
             </tbody>
         </table>

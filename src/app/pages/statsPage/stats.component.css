@@ -16,6 +16,10 @@ h2 small {
     padding: 8px;
 }
 
+.card-heading {
+    padding-top: 8px;
+}
+
 .col {
     padding-left: 4px;
     padding-right: 4px;

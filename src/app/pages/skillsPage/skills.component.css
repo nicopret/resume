@@ -1,4 +1,8 @@
 
+h5 {
+    cursor: pointer;
+}
+
 td {
     cursor: default;
     font-family: 'Questrial', sans-serif;

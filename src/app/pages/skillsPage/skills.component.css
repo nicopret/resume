@@ -36,3 +36,14 @@ td {
     font-family: 'Questrial', sans-serif;
     font-weight: 600;
 }
+
+.position-right {
+    position: absolute;
+    right: 15px;
+}
+
+.questrial {
+    cursor: pointer;
+    font-family: 'Questrial', sans-serif;
+    padding-top: 8px;
+}

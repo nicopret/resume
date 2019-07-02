@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
 
+    filterEnable: boolean = false;
+
     original: any;
 
     careers;
@@ -24,16 +26,22 @@ export class DashboardComponent implements OnInit {
         });
     }
 
+    clearFilter() {
+        this.filterEnable = false;
+        this.populateData(this.original);
+    }
+
     filter(item) {
-        console.log(this.original);
-        console.log(item);
+        this.filterEnable = true;
         let careers = JSON.parse(JSON.stringify(this.original.careers)).reduce((array, career) => {
             if (this._validItem(career, item.category, item.skill)) {
+                career.detail = true;
                 array.push(career);
             }
             return array;
         }, []);
-        this.populateData({ careers, education: this.education, profile: this.profile });
+        let education = JSON.parse(JSON.stringify(this.original.education)).filter((course) => course.skills && course.skills.indexOf(item.skill) > -1);
+        this.populateData({ careers, education, profile: this.profile });
     }
 
     async populateData(data) {
@@ -98,7 +106,7 @@ export class DashboardComponent implements OnInit {
                 item.dateStart = item.dateStart ? this._calcDate(item.dateStart) : new Date();
                 item.months = this._calcMonths(item.dateStart, item.dateEnd);
             }
-            item.detail = false;
+            item.detail = item.detail ? item.detail : false;
             return item;
         }) : [];
     }

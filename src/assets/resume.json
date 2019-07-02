@@ -145,10 +145,12 @@
     }, {
         "institution": "Coursera",
         "name": "Economics of money and banking",
+        "skills": [ "Banking", "Finance" ],
         "year": 2018
     }, {
         "institution": "Coursera",
         "name": "The global finance crisis",
+        "skills": [ "Finance" ],
         "year": 2018
     }, {
         "institution": "Coursera",
@@ -165,6 +167,7 @@
     }, {
         "institution": "Coursera",
         "name": "HTML, CSS and JavaScript",
+        "skills": [ "HTML", "CSS", "JavaScript" ],
         "year": 2015
     }, {
         "institution": "Coursera",

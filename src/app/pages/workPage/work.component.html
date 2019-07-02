@@ -1,6 +1,6 @@
 
 <div class="card">
-    <div class="card-header text-white bg-info">Work experience</div>
+    <div class="card-header text-white bg-info">Work experience<small class="float-right questrial" *ngIf="filterEnable" (click)="clearFilter()">Clear filter</small></div>
     <div class="card-body">
         <div class="card-text">
             <div class="block" *ngFor="let item of data" (click)="toggleDisplay(item)">

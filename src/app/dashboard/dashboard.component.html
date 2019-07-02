@@ -4,7 +4,7 @@
         <div class="col-md-3">
             <app-profile [data]="profile"></app-profile>
             <div style="margin-top: 15px">
-                <app-education [data]="education"></app-education>
+                <app-education [data]="education" [filterEnable]="filterEnable" (clear)="clearFilter()"></app-education>
             </div>
         </div>
         <div class="col-md-9">
@@ -12,8 +12,8 @@
                 <app-stats class="col" [data]="stats"></app-stats>
             </div>
             <div class="row">
-                <app-skills class="col" [data]="skills" (select)="filter($event)"></app-skills>
-                <app-work-experience class="col" [data]="careers" (filterData)="filter($event)"></app-work-experience>
+                <app-skills class="col" [data]="skills" [filterEnable]="filterEnable" (clear)="clearFilter()" (select)="filter($event)"></app-skills>
+                <app-work-experience class="col" [data]="careers" [filterEnable]="filterEnable" (clear)="clearFilter()" (filterData)="filter($event)"></app-work-experience>
             </div>
         </div>
     </div>

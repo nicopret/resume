@@ -10,6 +10,8 @@ import { Chart } from 'chart.js';
 export class SkillsComponent implements OnChanges {
     @ViewChild('lineChart') private chartRef;
     @Input() data;
+    @Input() filterEnable: boolean = false;
+    @Output() clear = new EventEmitter<any>();
     @Output() select = new EventEmitter<any>();
 
     category;
@@ -25,6 +27,10 @@ export class SkillsComponent implements OnChanges {
             });
         }
         this.setList('technologies');
+    }
+
+    clearFilter() {
+        this.clear.emit();
     }
 
     selectSkill(skill) {

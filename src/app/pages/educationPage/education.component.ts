@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
     selector: 'app-education',
@@ -7,4 +7,10 @@ import { Component, Input } from "@angular/core";
 })
 export class EducationComponent {
     @Input() data;
+    @Input() filterEnable: boolean = false;
+    @Output() clear = new EventEmitter<any>();
+
+    clearFilter() {
+        this.clear.emit();
+    }
 }

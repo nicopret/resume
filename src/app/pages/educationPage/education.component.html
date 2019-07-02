@@ -1,6 +1,6 @@
 
 <div class="card">
-    <div class="card-header text-white bg-secondary">Education</div>
+    <div class="card-header text-white bg-secondary">Education<small class="float-right questrial" *ngIf="filterEnable" (click)="clearFilter()">Clear filter</small></div>
     <div class="card-body">
         <div class="card-text">
             <div class="block" *ngFor="let item of data">

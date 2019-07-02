@@ -1,4 +1,19 @@
 
+i {
+    cursor: pointer;
+}
+
+.badge {
+    cursor: pointer;
+    font-family: 'Questrial', sans-serif;
+    font-size: 90%;
+    margin-right: 4px;
+}
+
+.badge:hover {
+    color: #ffc107;
+}
+
 .block {
     background-color: white;
     border-bottom: 1px solid #ddd;
@@ -18,7 +33,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.card-text p {
+p {
     font-family: 'Questrial', sans-serif;
 }
 

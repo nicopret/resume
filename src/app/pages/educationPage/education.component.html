@@ -3,9 +3,16 @@
     <div class="card-header text-white bg-secondary">Education<small class="float-right questrial" *ngIf="filterEnable" (click)="clearFilter()">Clear filter</small></div>
     <div class="card-body">
         <div class="card-text">
-            <div class="block" *ngFor="let item of data">
+            <div class="block" *ngFor="let item of data" (click)="toggleDisplay(item)">
                 <h5 class="text-secondary">{{ item.name }}</h5>
-                <p class="text-muted">{{ item.institution }} ({{ item.year }})</p>
+                <div class="d-flex" style="width: 100%">
+                    <p class="text-muted">{{ item.institution }} ({{ item.year }})</p>
+                    <p class="position-right" *ngIf="item.detail || item.skills"><i class="fa fa-plus text-muted" *ngIf="!item.detail"></i><i class="fa fa-minus text-muted" *ngIf="item.detail"></i></p>
+                </div>
+                <div *ngIf="item.detail">
+                    <p class="text-info">{{ item.description }}</p>
+                    <div><span class="badge badge-secondary" *ngFor="let badge of item.skills" (click)="filter(badge)">{{ badge.skill }}</span></div>
+                </div>
             </div>
         </div>
     </div>

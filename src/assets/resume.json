@@ -145,18 +145,22 @@
     }, {
         "institution": "Coursera",
         "name": "Economics of money and banking",
-        "skills": [ "Banking", "Finance" ],
+        "skills": [
+            { "category": "industries", "skill": "Banking"},
+            { "category": "industries", "skill": "Finance"}
+        ],
         "year": 2018
     }, {
         "institution": "Coursera",
         "name": "The global finance crisis",
-        "skills": [ "Finance" ],
+        "skills": [{ "category": "industries", "skill": "Finance"}],
         "year": 2018
     }, {
         "institution": "Coursera",
         "name": "Private equity and venture capital",
         "year": 2017
     }, {
+        "description": "The history of sport and how it evolved to play a formative role in our modern society",
         "institution": "Coursera",
         "name": "Sports and society",
         "year": 2016
@@ -165,9 +169,14 @@
         "name": "Using databases with Python",
         "year": 2016
     }, {
+        "description": "Hands on introductionary course into HTML, CSS and JavaScript",
         "institution": "Coursera",
         "name": "HTML, CSS and JavaScript",
-        "skills": [ "HTML", "CSS", "JavaScript" ],
+        "skills": [
+            { "category": "technologies", "skill": "HTML"},
+            { "category": "technologies", "skill": "CSS"},
+            { "category": "technologies", "skill": "JavaScript"}
+        ],
         "year": 2015
     }, {
         "institution": "Coursera",

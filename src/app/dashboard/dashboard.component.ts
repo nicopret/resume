@@ -33,6 +33,7 @@ export class DashboardComponent implements OnInit {
     }
 
     filter(item) {
+        console.log(item);
         this.currentSkill = item.skill;
         this.filterEnable = true;
         let careers = JSON.parse(JSON.stringify(this.original.careers)).reduce((array, career) => {
@@ -42,7 +43,21 @@ export class DashboardComponent implements OnInit {
             }
             return array;
         }, []);
-        let education = JSON.parse(JSON.stringify(this.original.education)).filter((course) => course.skills && course.skills.indexOf(item.skill) > -1);
+        let education = JSON.parse(JSON.stringify(this.original.education)).reduce((array, course) => {
+            let valid = false;
+            if (course.skills) {
+                course.skills.forEach((it) => {
+                    if (it.skill === item.skill) {
+                        valid = true;
+                    }
+                });
+            }
+            if (valid) {
+                course.detail = true;
+                array.push(course);
+            }
+            return array;
+        }, []);
         this.populateData({ careers, education, profile: this.profile });
     }
 
@@ -55,7 +70,10 @@ export class DashboardComponent implements OnInit {
             res.technologies = this._populateArray(res.technologies, this._reduceCategories(item.projects, 'technologies'), item.months);
             return res;
         }, { industries: [], project: [], services: [], technologies: []});
-        this.education = data.education;
+        this.education = data.education.map((course) => {
+            course.detail = course.detail ? course.detail : false;
+            return course;
+        });
         this.profile = data.profile;
         this.stats = [
             this._statsYears(this.careers ? Math.floor(this.careers.reduce((sum, item) => {

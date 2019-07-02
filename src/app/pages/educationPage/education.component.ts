@@ -9,8 +9,17 @@ export class EducationComponent {
     @Input() data;
     @Input() filterEnable: boolean = false;
     @Output() clear = new EventEmitter<any>();
+    @Output() filterData = new EventEmitter<any>();
 
     clearFilter() {
         this.clear.emit();
+    }
+
+    filter(item) {
+        this.filterData.next(item);
+    }
+
+    toggleDisplay(item) {
+        item.detail = !item.detail;
     }
 }

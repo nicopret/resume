@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
 
+    currentSkill: string = '';
     filterEnable: boolean = false;
-
     original: any;
 
     careers;
@@ -27,11 +27,13 @@ export class DashboardComponent implements OnInit {
     }
 
     clearFilter() {
+        this.currentSkill = '';
         this.filterEnable = false;
         this.populateData(this.original);
     }
 
     filter(item) {
+        this.currentSkill = item.skill;
         this.filterEnable = true;
         let careers = JSON.parse(JSON.stringify(this.original.careers)).reduce((array, career) => {
             if (this._validItem(career, item.category, item.skill)) {
@@ -55,29 +57,17 @@ export class DashboardComponent implements OnInit {
         }, { industries: [], project: [], services: [], technologies: []});
         this.education = data.education;
         this.profile = data.profile;
-        this.stats = [];
-        this.stats.push({
-            description: 'Total work experience',
-            metric: 'Years',
-            type: 'info',
-            value: this.careers ? Math.floor(this.careers.reduce((sum, item) => {
+        this.stats = [
+            this._statsYears(this.careers ? Math.floor(this.careers.reduce((sum, item) => {
                 sum += item.months;
                 return sum;
-            }, 0) / 12) : 0
-        }, {
-            description: 'Distance learning',
-            metric: 'Courses',
-            type: 'secondary',
-            value: this.education ? this.education.length : 0
-        }, {
-            description: 'Successfully delivered',
-            metric: 'Projects',
-            type: 'success',
-            value: this.careers ? this.careers.reduce((sum, item) => {
+            }, 0) / 12) : 0),
+            this._statsCourses(this.education),
+            this._statsProjects(this.careers ? this.careers.reduce((sum, item) => {
                 sum += item.projects ? item.projects.length : 0;
                 return sum;
-            }, 0) : 0
-        });
+            }, 0) : 0)
+        ];
     }
 
     private _calcDate(dateString) {
@@ -135,6 +125,33 @@ export class DashboardComponent implements OnInit {
             return res;
         }, []);
     }
+
+    private _statsCourses(array) {
+        return {
+            description: array.length === 0 ? 'Maybe soon.' : array.length > 1 ? 'Distance learning' : `Through ${array[0].institution}`,
+            metric: array.length === 0 ? 'No formal courses' : array.length > 1 ? 'Courses' : 'Course',
+            type: 'secondary',
+            value: array.length > 0 ? array.length : ''
+        };
+    };
+
+    private _statsProjects(years) {
+        return {
+            description: years > 0 ? 'Successfully delivered' : 'But hopefully soon',
+            metric: years === 0 ? 'No projects yet' : years > 1 ? 'Projects' : 'Project',
+            type: 'success',
+            value: years > 0 ? years : ''
+        };
+    };
+
+    private _statsYears(years) {
+        return {
+            description: this.filterEnable ? `${this.currentSkill} experience` : 'Total work experience',
+            metric: years === 0 ? '' : years > 1 ? 'Years' : 'Year',
+            type: 'info',
+            value: years > 0 ? years : 'No'
+        };
+    };
 
     private _validItem(item, category, skill) {
         if (category === 'industries') {

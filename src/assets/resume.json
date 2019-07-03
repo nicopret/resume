@@ -5,9 +5,9 @@
         "industry": "Banking",
         "position": "Senior Development Lead",
         "projects": [{
-            "name": "Mobile application",
+            "name": "Leading a dynamic group of full stack developers to deliver the next generation mobile banking app.",
             "project": [ "Agile", "Kanban", "Scrum" ],
-            "services": [ "Architecture", "Docker", "Microservices", "Springboot", "Swagger" ],
+            "services": [ "Architecture", "Microservices", "Springboot", "Swagger" ],
             "technologies": [ "CSS", "HTML", "Java", "JavaScript", "Kendo" ]
         }]
     }, {
@@ -17,55 +17,65 @@
         "industry": "Property",
         "position": "Full-Stack Engineer",
         "projects": [{
-            "name": "Property listing website",
+            "name": "Maintained and enhanced a property listing website which focused on properties located in estates.",
+            "project": [ "Agile", "Scrum" ],
+            "services": [ "Architecture", "Maps", "SQL Server", "Tomcat" ],
+            "technologies": [ "Angular", "CSS", "HTML", "Java", "JavaScript" ]
+        }, {
+            "name": "Developed the admin client that managed the property listing website",
             "project": [ "Agile", "Scrum" ],
             "services": [ "Architecture", "AWS", "SQL Server", "Tomcat", "Virtualization" ],
             "technologies": [ "Angular", "CSS", "HTML", "Java", "JavaScript" ]
         }, {
-            "name": "Website administration application",
+            "name": "Designed and developed a gateway server that enabled partners to integrate into our platform. The gateway had to cater for both REST and SOAP while focusing heavily on security and performance.",
             "project": [ "Agile", "Scrum" ],
-            "services": [ "Architecture", "AWS", "SQL Server", "Tomcat", "Virtualization" ],
-            "technologies": [ "Angular", "CSS", "HTML", "Java", "JavaScript" ]
-        }, {
-            "name": "API integration server",
-            "project": [ "Agile", "Scrum" ],
-            "services": [ "Architecture", "AWS", "Microservices", "Springboot", "Swagger" ],
-            "technologies": [ "Java", "JavaScript" ]
+            "services": [ "Architecture", "J2EE", "Tomcat" ],
+            "technologies": [ "Java" ]
         }]
     }, {
         "dateEnd": "2014-04-30",
         "dateStart": "2013-05-01",
+        "industry": "Media",
         "position": "Digital Strategist",
         "projects": [{
-            "name": "AR proof of concept"
-        }, {
-            "name": "Media rich advertising site"
+            "name": "Tecnical lead in a team of designers and copy writers. We focused on delivering media rich websites for the pre-sales team.",
+            "project": [ "Agile", "Kanban" ],
+            "services": [ "Architecture", "Design" ],
+            "technologies": [ "CSS", "HTML", "JavaScript" ]
         }]
     }, {
         "company": "Old Mutual",
         "dateEnd": "2013-04-30",
         "dateStart": "2012-06-01",
+        "industry": "Financial",
         "position": "Technical Architect",
         "projects": [{
-            "name": "Major Documentum upgrade"
+            "name": "Delivered a major Documentum upgrade which included multiple database upgrades, operating system upgrades and a migration of the content store to a LAN attahed storage solution. I also had to migrate the Development and Testing environments to virtualized servers.",
+            "project": [ "Waterfall" ],
+            "services": [ "Architecture", "Documentum", "Oracle", "Solaris", "VMWare"],
+            "technologies": [ "J2EE", "Java", "JavaScript" ]
         }]
     }, {
         "company": "Britehouse SSD",
         "dateEnd": "2012-05-31",
         "dateStart": "2011-09-01",
+        "industry": "IT",
         "position": "Solutions Architect",
         "projects": [{
-            "name": "PetroSA upgrade and enhancement"
+            "name": "Created a content management unit to assist existing and new partners with their content implementations",
+            "services": [ "Architecture", "Documentum" ],
+            "technologies": [ "Java" ]
         }]
     }, {
         "company": "EMC",
         "dateEnd": "2010-10-31",
         "dateStart": "2009-06-30",
+        "industry": "IT",
         "position": "Solutions Architect",
         "projects": [{
-            "name": "Telkom document capture project"
-        }, {
-            "name": "Umgeni water solution design"
+            "name": "Assisted various clients with Documentum, my responsibilities included pre-sales and the architeture and development of solutions for new and existing clients.",
+            "services": [ "Architecture", "Documentum" ],
+            "technologies": [ "Java" ]
         }]
     }, {
         "company": "Zilvermine IT Solutions",
@@ -135,6 +145,32 @@
         }]
     }],
     "education": [{
+        "institution": "Udemy",
+        "name": "AWS Certified Developer - Associate 2019",
+        "skills": [{ "category": "services", "skill": "AWS"}],
+        "year": 2019
+    }, {
+        "institution": "Udemy",
+        "name": "NodeJS - The complete guide",
+        "skills": [
+            { "category": "services", "skill": "node.js"},
+            { "category": "technologies", "skill": "JavaScript"}
+        ],
+        "year": 2019
+    }, {
+        "institution": "Udemy",
+        "name": "NativeScript + Angular",
+        "skills": [
+            { "category": "technologies", "skill": "Angular"},
+            { "category": "technologies", "skill": "NativeScript"}
+        ],
+        "year": 2019
+    }, {
+        "institution": "Udemy",
+        "name": "Angular 8 - The complete guide",
+        "skills": [{ "category": "technologies", "skill": "Angular"}],
+        "year": 2019
+    }, {
         "institution": "Udemy",
         "name": "Bash scripting",
         "year": 2018

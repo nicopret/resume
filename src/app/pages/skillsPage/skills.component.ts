@@ -25,8 +25,8 @@ export class SkillsComponent implements OnChanges {
                     item.years = Math.ceil(item.months / 12);
                 });
             });
+            this.setList('technologies');
         }
-        this.setList('technologies');
     }
 
     clearFilter() {

@@ -13,7 +13,7 @@
                 <div *ngIf="item.detail">
                     <p><span class="badge badge-secondary" (click)="filter('industries', item.industry)">{{ item.industry }}</span></p>
                     <div *ngFor="let project of item.projects">
-                        <p class="text-info bigger">{{ project.name }}</p>
+                        <p class="text-success bigger">{{ project.name }}</p>
                         <div class="left-gutter">
                             <p class="text-muted">Project: <span class="badge badge-secondary" *ngFor="let badge of project.project" (click)="filter('project', badge)">{{ badge }}</span></p>
                             <p class="text-muted">Services: <span class="badge badge-secondary" *ngFor="let badge of project.services" (click)="filter('services', badge)">{{ badge }}</span></p>

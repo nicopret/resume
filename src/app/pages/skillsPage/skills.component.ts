@@ -9,23 +9,30 @@ import { Chart } from 'chart.js';
 })
 export class SkillsComponent implements OnChanges {
     @ViewChild('lineChart') private chartRef;
+    @Input() category: string = "technologies";
     @Input() data;
     @Input() filterEnable: boolean = false;
     @Output() clear = new EventEmitter<any>();
     @Output() select = new EventEmitter<any>();
 
-    category;
     chart: any;
+    heading = {
+        industries: 'Industry related skills',
+        project: 'Project management skills',
+        services: 'Services and product skills',
+        technologies: 'Technology skills'
+    };
     list: [];
 
     ngOnChanges() {
+        console.log(this.category);
         if (this.data) {
             Object.keys(this.data).forEach((key) => {
                 this.data[key].forEach((item) => {
                     item.years = Math.ceil(item.months / 12);
                 });
             });
-            this.setList('technologies');
+            this.setList(this.category);
         }
     }
 

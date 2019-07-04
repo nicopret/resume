@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
     filterEnable: boolean = false;
     original: any;
 
+    category: string = "technologies";
     careers;
     education;
     profile;
@@ -29,11 +30,13 @@ export class DashboardComponent implements OnInit {
     clearFilter() {
         this.currentSkill = '';
         this.filterEnable = false;
+        this.original.careers.forEach((item) => item.detail = false);
+        this.original.education.forEach((item) => item.detail = false);
         this.populateData(this.original);
     }
 
     filter(item) {
-        console.log(item);
+        this.category = item.category;
         this.currentSkill = item.skill;
         this.filterEnable = true;
         let careers = JSON.parse(JSON.stringify(this.original.careers)).reduce((array, career) => {

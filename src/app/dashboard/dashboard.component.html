@@ -12,7 +12,7 @@
                 <app-stats class="col" [data]="stats"></app-stats>
             </div>
             <div class="row">
-                <app-skills class="col" [data]="skills" [filterEnable]="filterEnable" (clear)="clearFilter()" (select)="filter($event)"></app-skills>
+                <app-skills class="col" [category]="category" [data]="skills" [filterEnable]="filterEnable" (clear)="clearFilter()" (select)="filter($event)"></app-skills>
                 <app-work-experience class="col" [data]="careers" [filterEnable]="filterEnable" (clear)="clearFilter()" (filterData)="filter($event)"></app-work-experience>
             </div>
         </div>

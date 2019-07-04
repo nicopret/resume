@@ -40,7 +40,7 @@
         "projects": [{
             "name": "Tecnical lead in a team of designers and copy writers. We focused on delivering media rich websites for the pre-sales team.",
             "project": [ "Agile", "Kanban" ],
-            "services": [ "Architecture", "Design" ],
+            "services": [ "Architecture", "Design", "JQuery" ],
             "technologies": [ "CSS", "HTML", "JavaScript" ]
         }]
     }, {
@@ -75,49 +75,61 @@
         "projects": [{
             "name": "Assisted various clients with Documentum, my responsibilities included pre-sales and the architeture and development of solutions for new and existing clients.",
             "services": [ "Architecture", "Documentum" ],
-            "technologies": [ "Java" ]
+            "technologies": [ "Java", "J2EE" ]
         }]
     }, {
         "company": "Zilvermine IT Solutions",
         "dateEnd": "2009-05-31",
         "dateStart": "2008-03-01",
+        "industry": "Banking",
         "position": "Technical Architect",
         "projects": [{
-            "name": "Documentum solution for client biometrics"
+            "name": "Lead the technical design for a customer biometric system for one of the leading banks in South Africa",
+            "services": [ "Architecture", "Documentum" ]
         }]
     }, {
         "company": "Old Mutual",
         "dateEnd": "2008-02-28",
         "dateStart": "2005-06-01",
+        "industry": "Financial",
         "position": "Technical Architect",
         "projects": [{
-            "name": "Various Documentum upgrades"
-        }, {
-            "name": "Implementation of reporting and admin functions"
+            "name": "Administer and improved the Documentum installation",
+            "services": [ "Documentum" ],
+            "technologies": [ "Java", "J2EE" ]
         }]
     }, {
         "company": "Waymark Infotech",
         "dateEnd": "2005-05-31",
         "dateStart": "2004-03-01",
+        "industry": "IT",
         "position": "Senior Documentum Developer",
         "projects": [{
-            "name": "DTI process automation"
+            "name": "Involved in various public sector projects that focused on content capture and business process automation",
+            "services": [ "Documentum" ],
+            "technologies": [ "Java", "J2EE" ]
         }]
     }, {
         "company": "Discovery Health",
         "dateEnd": "2004-02-28",
         "dateStart": "2002-04-01",
+        "industry": "Financial",
         "position": "Documentum Developer",
         "projects": [{
-            "name": "Web content development and administration"
+            "name": "Web content development and administration",
+            "services": [ "Documentum" ],
+            "technologies": [ "Java", "J2EE" ]
         }]
     }, {
         "company": "Discovery Health",
         "dateEnd": "2002-03-31",
         "dateStart": "2001-03-01",
+        "industry": "Financial",
         "position": "Javascript developer",
         "projects": [{
-            "name": "Website development and optimisation"
+            "name": "Website design, development and optimisation",
+            "services": [ "Architecture", "Design", "JQuery" ],
+            "technologies": [ "CSS", "HTML", "JavaScript" ]
         }]
     }, {
         "company": "Bank of Athens",
@@ -194,6 +206,7 @@
     }, {
         "institution": "Coursera",
         "name": "Private equity and venture capital",
+        "skills": [{ "category": "industries", "skill": "Finance"}],
         "year": 2017
     }, {
         "description": "The history of sport and how it evolved to play a formative role in our modern society",

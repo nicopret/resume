@@ -40,6 +40,9 @@ export class SkillsComponent implements OnChanges {
     setList(item) {
         this.category = item;
         this.list = this.data ? this.data[item] : [];
+        if (this.chart) {
+            this.chart.reset();
+        }
         this.chart = new Chart(this.chartRef.nativeElement, {
             type: 'bar',
             data: {

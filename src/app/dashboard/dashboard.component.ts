@@ -71,7 +71,7 @@ export class DashboardComponent implements OnInit {
             return res;
         }, { industries: [], project: [], services: [], technologies: []});
         this.education = data.education.map((course) => {
-//            course.detail = course.detail ? course.detail : false;
+            course.detail = course.detail ? course.detail : false;
             return course;
         });
         this.profile = data.profile;

@@ -280,38 +280,9 @@
         }],
         "fullName": "Nico Pretorius",
         "image": "nico.jpg",
+        "introduction": [
+            "Whatever the size, scope or complexity, together we can get IT delivered."
+        ],
         "title": "Technology Whisperer"
-    },
-    "skills": {
-        "industries": [
-            { "name": "Building", "level": 3, "years": 2 },
-            { "name": "Financial services", "level": 4, "years": 14 },
-            { "name": "Manufacturing", "level": 3, "years": 2 }
-        ],
-        "services": [
-            { "name": "Agile", "level": 4, "years": 10 },
-            { "name": "Application architecture", "level": 4, "years": 10 },
-            { "name": "Business process analysis", "level": 4, "years": 10 },
-            { "name": "Data analysis", "level": 3, "years": 4 },
-            { "name": "Data architecture", "level": 2, "years": 2 },
-            { "name": "Data modelling", "level": 2, "years": 2 },
-            { "name": "Enterprise architecture", "level": 4, "years": 4 },
-            { "name": "Graphic design", "level": 2, "years": 2 },
-            { "name": "Infrastructure architecture", "level": 3, "years": 4 },
-            { "name": "Scrum", "level": 3, "years": 4 },
-            { "name": "Solution design", "level": 4, "years": 6 },
-            { "name": "Team mentoring", "level": 4, "years": 8 }
-        ],
-        "technologies": [
-            { "name": "Bash scripting", "level": 2, "years": 2 },
-            { "name": "CSS", "level": 3, "years": 10 },
-            { "name": "Design patterns", "level": 3, "years": 10 },
-            { "name": "HTML", "level": 3, "years": 10 },
-            { "name": "Java", "level": 4, "years": 10 },
-            { "name": "JavaScript", "level": 4, "years": 10 },
-            { "name": "MySql", "level" : 3, "years": 4 },
-            { "name": "Spring", "level": 3, "years": 4 },
-            { "name": "SQL Server", "level": 3, "years": 4 }
-        ]
     }
 }

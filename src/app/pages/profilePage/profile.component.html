@@ -5,6 +5,7 @@
         <img class="img-fluid rounded-circle" src="assets/{{ data.image }}" alt="Nico Pretorius Profile Image">
         <div class="card-text">
             <h4 class="text-dark">{{ data.title }}</h4>
+            <p class="text-muted text-center" *ngFor="let item of data.introduction">{{ item }}</p>
         </div>
     </div>
     <div class="card-footer bg-white d-flex">

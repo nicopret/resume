@@ -1,27 +1,31 @@
-# Nicopretorius
+# Resume
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
+This is the soure code to my resume site: http://nicopretorius.com. It runs on angular.io and bootstrap and uses a single json file to format your CV.
 
-## Development server
+## Setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Clone the project with `git clone https://github.com/nicopret/resume.git`
 
-## Code scaffolding
+Go the the resume folder and run `npm install`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Once this is done, run the site with `npm start`, and voila!
 
-## Build
+## Your own stuff
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Go to the `assets` folder and open the `resume.json` file. Update this file with your own information and save, once done and saved you will see your details in your browser.
 
-## Running unit tests
+O yes, remember to change the `title` tag in the `index.html` file in the root directory, you want your name & title to display in the browser tag :)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Hosting
 
-## Running end-to-end tests
+I'm using S3 to host the site, it's easy and cheap.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Once you are ready to publish your resume, just run `npm run build` from the command line. This will create the folder `dist/resume` with all the files you need in there. Just drop those files into your hosting location.
 
-## Further help
+## Still to do
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+There are no unit testing or end-to-end testing. I know, bad bad me, and I do feel terrible, but this was a quick application I did in my spare time over 2 days. So the testing is high priority on what must still be done.
+
+I also want to render a word and pdf download automatically from the JSON file, I reckon this will be the next step, after that, unit testing and e2e testing.
+
+If you have want me to add anything more, please let me know :)

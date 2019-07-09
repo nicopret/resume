@@ -47,15 +47,7 @@ export class DashboardComponent implements OnInit {
             return array;
         }, []);
         let education = JSON.parse(JSON.stringify(this.original.education)).reduce((array, course) => {
-            let valid = false;
-            if (course.skills) {
-                course.skills.forEach((it) => {
-                    if (it.skill === item.skill) {
-                        valid = true;
-                    }
-                });
-            }
-            if (valid) {
+            if (this._validSkill(course, item.skill)) {
                 course.detail = true;
                 array.push(course);
             }
@@ -184,4 +176,17 @@ export class DashboardComponent implements OnInit {
         }
         return result;
     }
+
+    private _validSkill(course, skill) {
+        let valid = false;
+        if (course.skills) {
+            course.skills.forEach((it) => {
+                if (it.skill === skill) {
+                    valid = true;
+                }
+            });
+        }
+        return valid;
+    }
+
 }

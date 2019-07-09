@@ -135,13 +135,9 @@ export class DashboardComponent implements OnInit {
         if (!array) {
             return [];
         }
-        return array.reduce((res, item) => {
-            if (item[key]) {
-                item[key].forEach((value) => {
-                    if (res.indexOf(value) < 0) {
-                        res.push(value);
-                    }
-                });
+        return array.filter((item) => item[key]).map((item) => item[key]).flat().reduce((res, item) => {
+            if (res.indexOf(item) < 0) {
+                res.push(item);
             }
             return res;
         }, []);

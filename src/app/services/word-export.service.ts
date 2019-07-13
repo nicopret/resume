@@ -64,7 +64,10 @@ export class WordExportService {
     }
 
     formatDate(date) {
-        let dateArray = date.toDateString().split(' ');
+        if (!date) {
+            return 'Current';
+        }
+        let dateArray = new Date(date).toDateString().split(' ');
         return `${dateArray[1]} ${dateArray[3]}`;
     }
 

@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
             this.original = response;
             this.populateData(response);
         });
+        this.wordExport.download.subscribe((input) => this.downloadFile(input));
     }
 
     clearFilter() {
@@ -35,6 +36,14 @@ export class DashboardComponent implements OnInit {
         this.original.careers.forEach((item) => item.detail = false);
         this.original.education.forEach((item) => item.detail = false);
         this.populateData(this.original);
+    }
+
+    downloadFile(input) {
+        const blob = new Blob([input.content], { type: 'application/msword' });
+        const anchor = document.createElement('a');
+        anchor.href = URL.createObjectURL(blob);
+        anchor.download = input.fileName;
+        anchor.click();
     }
 
     downloadWord() {

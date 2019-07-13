@@ -1,24 +1,26 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { WordExportService } from '../services/word-export.service';
 
 @Component({
     templateUrl: './dashboard.component.html',
-    styleUrls: [ './dashboard.component.css' ]
+    styleUrls: [ './dashboard.component.css' ],
+    providers: [ WordExportService ]
 })
 export class DashboardComponent implements OnInit {
 
-    currentSkill: string = '';
-    filterEnable: boolean = false;
+    currentSkill = '';
+    filterEnable = false;
     original: any;
 
-    category: string = "technologies";
+    category = 'technologies';
     careers;
     education;
     profile;
     skills;
     stats = [];
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private wordExport: WordExportService) {}
 
     ngOnInit() {
         this.http.get('assets/resume.json').subscribe((response: any) => {
@@ -35,18 +37,23 @@ export class DashboardComponent implements OnInit {
         this.populateData(this.original);
     }
 
+    downloadWord() {
+        this.wordExport.createDoc({ careers: this.careers, education: this.education, filter: this.currentSkill,
+            profile: this.profile, skills: this.skills});
+    }
+
     filter(item) {
         this.category = item.category;
         this.currentSkill = item.skill;
         this.filterEnable = true;
-        let careers = JSON.parse(JSON.stringify(this.original.careers)).reduce((array, career) => {
+        const careers = JSON.parse(JSON.stringify(this.original.careers)).reduce((array, career) => {
             if (this._validItem(career, item.category, item.skill)) {
                 career.detail = true;
                 array.push(career);
             }
             return array;
         }, []);
-        let education = JSON.parse(JSON.stringify(this.original.education)).reduce((array, course) => {
+        const education = JSON.parse(JSON.stringify(this.original.education)).reduce((array, course) => {
             if (this._validSkill(course, item.skill)) {
                 course.detail = true;
                 array.push(course);
@@ -84,7 +91,7 @@ export class DashboardComponent implements OnInit {
     }
 
     private _calcDate(dateString) {
-        let dateArray = dateString.split('-');
+        const dateArray = dateString.split('-');
         return new Date(dateArray[0], parseInt(dateArray[1]) - 1, dateArray[2]);
     }
 

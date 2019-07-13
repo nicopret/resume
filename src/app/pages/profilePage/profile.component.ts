@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-profile',
@@ -7,4 +7,9 @@ import { Component, Input } from "@angular/core";
 })
 export class ProfileComponent {
     @Input() data;
+    @Output() wordDownload = new EventEmitter();
+
+    downloadWord() {
+        this.wordDownload.next();
+    }
 }

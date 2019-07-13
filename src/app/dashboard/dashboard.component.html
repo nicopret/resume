@@ -2,7 +2,7 @@
 <div class="container-fluid d-none d-md-block">
     <div class="row">
         <div class="col-md-3">
-            <app-profile [data]="profile"></app-profile>
+            <app-profile [data]="profile" (wordDownload)="downloadWord()"></app-profile>
             <div style="margin-top: 15px">
                 <app-education [data]="education" [filterEnable]="filterEnable" (clear)="clearFilter()" (filterData)="filter($event)"></app-education>
             </div>

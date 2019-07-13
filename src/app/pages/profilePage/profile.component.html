@@ -14,4 +14,7 @@
             <a href="{{ item.link }}" *ngIf="item.type == 'link'" target="_blank"><i class="{{ item.icon }}"></i></a>
         </div>
     </div>
+    <div class="card-text bg-white d-flex">
+        <div class="col text-muted text-center download-link" (click)="downloadWord()"><i class="fa fa-download spacing-right"></i><span>.docx</span></div>
+    </div>
 </div>

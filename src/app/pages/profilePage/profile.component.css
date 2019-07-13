@@ -11,3 +11,19 @@
 .card-text h4 {
     padding-top: 12px;
 }
+
+.download-link {
+    cursor: pointer;
+}
+
+.download-link span {
+    text-decoration: none;
+}
+
+.download-link span:hover {
+    text-decoration: underline;
+}
+
+.spacing-right {
+    margin-right: 6px;
+}

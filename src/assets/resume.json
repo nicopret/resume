@@ -267,15 +267,23 @@
     "profile": {
         "contact": [{
             "icon": "fa fa-envelope-o",
+            "label": "Email",
             "link": "info@nicopretorius.com",
             "type": "email"
         }, {
             "icon": "fa fa-linkedin",
+            "label": "Linkedin",
             "link": "https://www.linkedin.com/in/nicopretorius/",
             "type": "link"
         }, {
             "icon": "fa fa-twitter",
+            "label": "Twitter",
             "link": "https://twitter.com/nicopreto",
+            "type": "link"
+        }, {
+            "icon": "fa fa-github",
+            "label": "Github",
+            "link": "https://github.com/nicopret/resume",
             "type": "link"
         }],
         "fullName": "Nico Pretorius",

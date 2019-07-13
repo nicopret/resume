@@ -31,17 +31,27 @@ export class WordExportService {
         document.loadZip(zip);
 
         document.setData({
+            careers: data.careers.map((item) => {
+                item.dateEnd = this.formatDate(item.dateEnd);
+                item.dateStart = this.formatDate(item.dateStart);
+                return item;
+            }),
             contact: data.profile.contact,
-            filter: 'Pleb',
+            education: data.education,
+            filter: '',
             full_name: data.profile.fullName,
-            hasEducation: false,
-            hasExperience: false,
+            hasEducation: true,
+            hasExperience: true,
             hasFilter: true,
             hasImage: false,
-            hasIntroduction: false,
-            hasSkills: false,
-            hasSummary: false,
-            image: 'profile.jpg'
+            hasIntroduction: true,
+            hasSkills: true,
+            hasSummary: true,
+            image: 'profile.jpg',
+            introduction: data.introduction,
+            skills: Object.keys(data.skills).reduce((array, key) => { return array.concat(data.skills[key]); }, [])
+                .sort((a, b) => a.years > b.years ? -1 : a.years < b.years ? 1 : a.name > b.name ? 1 : -1),
+            summary: data.summary
         });
         document.render();
 
@@ -53,6 +63,11 @@ export class WordExportService {
         this.download.next({ content: buffer, fileName });
     }
 
+    formatDate(date) {
+        let dateArray = date.toDateString().split(' ');
+        return `${dateArray[1]} ${dateArray[3]}`;
+    }
+
     async getFile(fileName) {
         return new Promise((resolve) => {
             this.http.get(`/assets/${fileName}`, { responseType: 'arraybuffer'}).subscribe((res) => resolve(res));
@@ -61,7 +76,7 @@ export class WordExportService {
 
     async getImage(fileName) {
         return new Promise((resolve) => {
-            this.http.get(`/assets/${fileName}`).subscribe((res) => resolve(res));
+            this.http.get(`/assets/${fileName}`, { responseType: 'blob'}).subscribe((res) => resolve(res));
         });
     }
 }

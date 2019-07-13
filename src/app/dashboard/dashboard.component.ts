@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
     downloadFile(input) {
         const blob = new Blob([input.content], { type: 'application/msword' });
         const anchor = document.createElement('a');
-        anchor.href = URL.createObjectURL(blob);
+        anchor.href = URL.createObjectURL(input.content);
         anchor.download = input.fileName;
         anchor.click();
     }

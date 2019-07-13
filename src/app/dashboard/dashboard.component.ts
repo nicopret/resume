@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
 
     downloadWord() {
         this.wordExport.createDoc({ careers: this.careers, education: this.education, filter: this.currentSkill,
-            profile: this.profile, skills: this.skills});
+            introduction: this.original.introduction, profile: this.profile, skills: this.skills, summary: this.original.summary });
     }
 
     filter(item) {

@@ -264,6 +264,12 @@
         "name": "Designing and executing information secrity strategies",
         "year": 2013
     }],
+    "introduction": [
+        { "item": "My career objective is to lead or assist an organisation as an Enterprise Architect in the migration process from a traditional IT environment to a digital, modern and agile cloud-based solution. New approaches in project management and application virtualisation enables organisations to be more relevant and customer orientated. I am working towards my AWS Associate Solutions Architect and Associate Developer certifications to better achieve this objective." },
+        { "item": "I have an easy leadership style and I enjoy coaching and mentoring of colleagues to help them reach their potential. I have excellent communication skills and am able to interact with stakeholders in different business functions." },
+        { "item": "I was fortunate enough to spend almost 10 years as an Enterprise Content Management specialist across various industries. This experience enabled me to better interpret the wider audience when designing and implementing enterprise wide solutions." },
+        { "item": "In 2013 I’ve stepped away from the content management area to focus more on development and new innovations in the IT industry. After nearly 5 years I’m now leading a team of senior and junior resources in delivering a mobile solution for one of South Africa’s leading banks." }
+    ],
     "profile": {
         "contact": [{
             "icon": "fa fa-envelope-o",
@@ -292,5 +298,6 @@
             "Whatever the size, scope or complexity, together we can get IT delivered."
         ],
         "title": "Technology Whisperer"
-    }
+    },
+    "summary": "We are amid the biggest number of disruptive changes in our short history, where many technologies have a direct impact upon one another. The challenge to the modern organisation is not just to steer through these changes, but to take advantage of them in an agile and productive way. I strive to assist with the successful migration and implementation of a modern customer focused infrastructure"
 }

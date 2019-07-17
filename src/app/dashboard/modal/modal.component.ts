@@ -21,7 +21,7 @@ export class ModalComponent {
 
     @Input() closable = true;
     @Input() heading = '';
-    @Input() visible = true;
+    @Input() visible = false;
     @Output() valid = new EventEmitter();
     @Output() visibleChanges: EventEmitter<boolean> = new EventEmitter<boolean>();
 

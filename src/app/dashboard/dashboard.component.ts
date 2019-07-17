@@ -20,6 +20,16 @@ export class DashboardComponent implements OnInit {
     skills;
     stats = [];
 
+    showDialog = false;
+    wordRenderOptions = {
+        hasEducation: true,
+        hasExperience: true,
+        hasImage: false,
+        hasIntroduction: false,
+        hasSkills: true,
+        hasSummary: false,
+    };
+
     constructor(private http: HttpClient, private wordExport: WordExportService) {}
 
     ngOnInit() {
@@ -38,6 +48,10 @@ export class DashboardComponent implements OnInit {
         this.populateData(this.original);
     }
 
+    close() {
+        this.showDialog = false;
+    }
+
     downloadFile(input) {
         const blob = new Blob([input.content], { type: 'application/msword' });
         const anchor = document.createElement('a');
@@ -47,8 +61,10 @@ export class DashboardComponent implements OnInit {
     }
 
     downloadWord() {
-        this.wordExport.createDoc({ careers: this.careers, education: this.education, filter: this.currentSkill,
-            introduction: this.original.introduction, profile: this.profile, skills: this.skills, summary: this.original.summary });
+        this.showDialog = true;
+//        this.wordExport.createDoc({ careers: this.careers, education: this.education, filter: this.currentSkill,
+//            introduction: this.original.introduction, profile: this.profile, skills: this.skills, summary: this.original.summary },
+//            this.wordRenderOptions);
     }
 
     filter(item) {

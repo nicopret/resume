@@ -13,8 +13,7 @@ export class WordExportService {
 
     constructor(private http: HttpClient) {}
 
-    async createDoc(data: any) {
-        console.log(data);
+    async createDoc(data: any, options) {
         const fileName = `Resume for ${data.profile.fullName}${data.filter.length ? ' - ' + data.filter + ' experience' : ''}.doc`;
 
         const template = await this.getFile('template.docx');
@@ -30,7 +29,7 @@ export class WordExportService {
         document.attachModule(imageModule);
         document.loadZip(zip);
 
-        document.setData({
+        document.setData(Object.assign({
             careers: data.careers.map((item) => {
                 item.dateEnd = this.formatDate(item.dateEnd);
                 item.dateStart = this.formatDate(item.dateStart);
@@ -38,21 +37,15 @@ export class WordExportService {
             }),
             contact: data.profile.contact,
             education: data.education,
-            filter: '',
+            filter: data.filter.length ? data.filter : '',
             full_name: data.profile.fullName,
-            hasEducation: true,
-            hasExperience: true,
-            hasFilter: true,
-            hasImage: false,
-            hasIntroduction: true,
-            hasSkills: true,
-            hasSummary: true,
+            hasFilter: data.filter.length > 0,
             image: 'profile.jpg',
             introduction: data.introduction,
-            skills: Object.keys(data.skills).reduce((array, key) => { return array.concat(data.skills[key]); }, [])
+            skills: Object.keys(data.skills).reduce((array, key) => array.concat(data.skills[key]), [])
                 .sort((a, b) => a.years > b.years ? -1 : a.years < b.years ? 1 : a.name > b.name ? 1 : -1),
             summary: data.summary
-        });
+        }, options));
         document.render();
 
         const buffer = document.getZip().generate({
@@ -67,7 +60,7 @@ export class WordExportService {
         if (!date) {
             return 'Current';
         }
-        let dateArray = new Date(date).toDateString().split(' ');
+        const dateArray = new Date(date).toDateString().split(' ');
         return `${dateArray[1]} ${dateArray[3]}`;
     }
 

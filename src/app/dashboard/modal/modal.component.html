@@ -1,0 +1,7 @@
+
+<div [@dialog] *ngIf="visible" class="dialog">
+    <div class="card-header text-white bg-dark">{{ heading }}</div>
+    <ng-content></ng-content>
+    <button class="close-btn" *ngIf="closable" (click)="close()" aria-label="Close">X</button>
+</div>
+<div class="overlay" *ngIf="visible" (click)="close()"></div>

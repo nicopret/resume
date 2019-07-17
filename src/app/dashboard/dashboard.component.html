@@ -27,3 +27,43 @@
     <div class="col no-padding gutter"><app-education [data]="education" [filterEnable]="filterEnable" (clear)="clearFilter()" (filterData)="filter($event)"></app-education></div>
     <br><br><br><br><br>
 </div>
+
+<app-modal [visible]="showWordRenderModal" (valid)="export($event)" (visibleChanges)="close($event)" heading="Select your export options">
+    <table class="table table-hover text-primary">
+        <tr class="show-pointer" (click)="wordRenderOptions.hasIntroduction = !wordRenderOptions.hasIntroduction">
+            <td class="modal-check">
+                <i class="fa fa-square-o" *ngIf="!wordRenderOptions.hasIntroduction"></i>
+                <i class="fa fa-check-square-o" *ngIf="wordRenderOptions.hasIntroduction"></i>
+            </td>
+            <td>Introduction</td>
+        </tr>
+        <tr class="show-pointer" (click)="wordRenderOptions.hasEducation = !wordRenderOptions.hasEducation">
+            <td class="modal-check">
+                <i class="fa fa-square-o" *ngIf="!wordRenderOptions.hasEducation"></i>
+                <i class="fa fa-check-square-o" *ngIf="wordRenderOptions.hasEducation"></i>
+            </td>
+            <td>Education</td>
+        </tr>
+        <tr class="show-pointer" (click)="wordRenderOptions.hasExperience = !wordRenderOptions.hasExperience">
+            <td class="modal-check">
+                <i class="fa fa-square-o" *ngIf="!wordRenderOptions.hasExperience"></i>
+                <i class="fa fa-check-square-o" *ngIf="wordRenderOptions.hasExperience"></i>
+            </td>
+            <td>Experience</td>
+        </tr>
+        <tr class="show-pointer" (click)="wordRenderOptions.hasSkills = !wordRenderOptions.hasSkills">
+            <td class="modal-check">
+                <i class="fa fa-square-o" *ngIf="!wordRenderOptions.hasSkills"></i>
+                <i class="fa fa-check-square-o" *ngIf="wordRenderOptions.hasSkills"></i>
+            </td>
+            <td>Skills</td>
+        </tr>
+        <tr class="show-pointer" (click)="wordRenderOptions.hasSummary = !wordRenderOptions.hasSummary">
+            <td class="modal-check">
+                <i class="fa fa-square-o" *ngIf="!wordRenderOptions.hasSummary"></i>
+                <i class="fa fa-check-square-o" *ngIf="wordRenderOptions.hasSummary"></i>
+            </td>
+            <td>Summary</td>
+        </tr>
+    </table>
+</app-modal>

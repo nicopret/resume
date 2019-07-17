@@ -3,6 +3,14 @@
     margin-bottom: 15px;
 }
 
+.modal-check {
+    width: 20px;
+}
+
 .no-padding {
     padding: 0;
+}
+
+.show-pointer {
+    cursor: pointer;
 }

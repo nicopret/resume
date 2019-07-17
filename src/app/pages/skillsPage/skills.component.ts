@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, ViewChild, Output, EventEmitter } from "@angular/core";
+import { Component, Input, OnChanges, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { Chart } from 'chart.js';
 
@@ -9,9 +9,9 @@ import { Chart } from 'chart.js';
 })
 export class SkillsComponent implements OnChanges {
     @ViewChild('lineChart') private chartRef;
-    @Input() category: string = "technologies";
+    @Input() category = 'technologies';
     @Input() data;
-    @Input() filterEnable: boolean = false;
+    @Input() filterEnable = false;
     @Output() clear = new EventEmitter<any>();
     @Output() select = new EventEmitter<any>();
 
@@ -25,7 +25,6 @@ export class SkillsComponent implements OnChanges {
     list: [];
 
     ngOnChanges() {
-        console.log(this.category);
         if (this.data) {
             Object.keys(this.data).forEach((key) => {
                 this.data[key].forEach((item) => {
@@ -57,9 +56,9 @@ export class SkillsComponent implements OnChanges {
                     backgroundColor: 'rgba(255, 193, 7, 1)',
                     borderColor: 'rgba(211, 158, 0, 1)',
                     borderWidth: 2,
-                    data: this.list.map((item: any) => item.years),
+                    data: this.list.map((dataItem: any) => dataItem.years),
                 }],
-                labels: this.list.map((item: any) => item.name)
+                labels: this.list.map((labelItem: any) => labelItem.name)
             },
             options: {
                 legend: {

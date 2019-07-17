@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { transition, trigger, style, animate } from '@angular/animations';
-import { headersToString } from 'selenium-webdriver/http';
 
 @Component({
     selector: 'app-modal',
@@ -18,17 +17,21 @@ import { headersToString } from 'selenium-webdriver/http';
         ])
     ]
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent {
 
     @Input() closable = true;
     @Input() heading = '';
-    @Input() visible: boolean;
+    @Input() visible = true;
+    @Output() valid = new EventEmitter();
     @Output() visibleChanges: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-    ngOnInit() {}
 
     close() {
         this.visible = false;
         this.visibleChanges.emit(this.visible);
+    }
+
+    export() {
+        this.visible = false;
+        this.valid.emit(this.visible);
     }
 }

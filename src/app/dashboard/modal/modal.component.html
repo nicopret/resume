@@ -1,7 +1,17 @@
 
 <div [@dialog] *ngIf="visible" class="dialog">
-    <div class="card-header text-white bg-dark">{{ heading }}</div>
-    <ng-content></ng-content>
-    <button class="close-btn" *ngIf="closable" (click)="close()" aria-label="Close">X</button>
+    <div class="card">
+        <div class="card-header text-white bg-primary">
+            <span>{{ heading }}</span>
+            <button type="button" class="close close-btn text-white" *ngIf="closable" (click)="close()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="card-body">
+            <ng-content></ng-content>
+        </div>
+        <div class="card-footer float-right">
+            <button class="btn btn-outline-primary float-right" (click)="export()"><i class="fa fa-download spacing-right"></i><span>Export</span></button>
+            <button class="btn btn-outline-secondary float-right" (click)="close()"><i class="fa fa-times spacing-right"></i><span>Cancel</span></button>
+        </div>   
+    </div>
 </div>
 <div class="overlay" *ngIf="visible" (click)="close()"></div>

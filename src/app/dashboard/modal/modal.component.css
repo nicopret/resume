@@ -1,12 +1,12 @@
 
-.overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 999;
+.btn {
+    margin-left: 8px;
+}
+
+.close-btn {
+    position: absolute;
+    right: 8px;
+    top: 8px;
 }
 
 .dialog {
@@ -22,8 +22,16 @@
     z-index: 1000;
 }
 
-.close-btn {
-    position: absolute;
-    right: 8px;
-    top: 8px;
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+}
+
+.spacing-right {
+    margin-right: 6px;
 }

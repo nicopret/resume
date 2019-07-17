@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
     skills;
     stats = [];
 
-    showDialog = false;
+    showWordRenderModal = false;
     wordRenderOptions = {
         hasEducation: true,
         hasExperience: true,
@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
     }
 
     close() {
-        this.showDialog = false;
+        this.showWordRenderModal = false;
     }
 
     downloadFile(input) {
@@ -61,10 +61,14 @@ export class DashboardComponent implements OnInit {
     }
 
     downloadWord() {
-        this.showDialog = true;
-//        this.wordExport.createDoc({ careers: this.careers, education: this.education, filter: this.currentSkill,
-//            introduction: this.original.introduction, profile: this.profile, skills: this.skills, summary: this.original.summary },
-//            this.wordRenderOptions);
+        this.showWordRenderModal = true;
+    }
+
+    export(input) {
+        this.showWordRenderModal = input;
+        this.wordExport.createDoc({ careers: this.careers, education: this.education, filter: this.currentSkill,
+            introduction: this.original.introduction, profile: this.profile, skills: this.skills, summary: this.original.summary },
+            this.wordRenderOptions);
     }
 
     filter(item) {

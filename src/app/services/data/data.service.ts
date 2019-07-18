@@ -7,7 +7,7 @@ export class DataService {
 
     constructor(private http: HttpClient) {}
 
-    init(): Observable<any> {
+    public init(): Observable<any> {
         return this.http.get('/assets/resume.json');
     }
 }

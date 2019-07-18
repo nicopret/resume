@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { WordExportService } from '../services/word-export.service';
+import { DataService } from '../services/data/data.service';
 
 @Component({
     templateUrl: './dashboard.component.html',
     styleUrls: [ './dashboard.component.css' ],
-    providers: [ WordExportService ]
+    providers: [ DataService, WordExportService ]
 })
 export class DashboardComponent implements OnInit {
 
@@ -30,14 +31,18 @@ export class DashboardComponent implements OnInit {
         hasSummary: false,
     };
 
-    constructor(private http: HttpClient, private wordExport: WordExportService) {}
+    constructor(private dataService: DataService, private http: HttpClient, private wordExport: WordExportService) {}
 
     ngOnInit() {
-        this.http.get('assets/resume.json').subscribe((response: any) => {
+        this.loadData();
+        this.wordExport.download.subscribe((input) => this.downloadFile(input));
+    }
+
+    loadData() {
+        this.dataService.init().subscribe((response: any) => {
             this.original = response;
             this.populateData(response);
         });
-        this.wordExport.download.subscribe((input) => this.downloadFile(input));
     }
 
     clearFilter() {

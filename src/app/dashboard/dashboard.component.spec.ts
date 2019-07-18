@@ -7,6 +7,7 @@ import { EducationComponent } from '../pages/educationPage/education.component';
 import { SkillsComponent } from '../pages/skillsPage/skills.component';
 import { StatsComponent } from '../pages/statsPage/stats.component';
 import { WorkComponent } from '../pages/workPage/work.component';
+import { ModalComponent } from './modal/modal.component';
 
 describe('Dashboard Component', () => {
 
@@ -18,6 +19,7 @@ describe('Dashboard Component', () => {
             ],
             declarations: [
                 DashboardComponent,
+                ModalComponent,
                 EducationComponent,
                 ProfileComponent,
                 SkillsComponent,

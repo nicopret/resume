@@ -1,6 +1,7 @@
 
 .card-footer {
-    font-size: 200%;
+    font-size: 160%;
+    overflow: hidden;
 }
 
 .card-text {

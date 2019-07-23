@@ -21,7 +21,7 @@ describe('API service', () => {
         expect(service).toBeTruthy();
     });
 
-    it('json object return', () => {
+    it('getJsonFile() should return a json object', () => {
 
         service.getJsonFile('resume.json').subscribe((result) => {
             expect(result).toBeTruthy();
@@ -31,4 +31,17 @@ describe('API service', () => {
         const req = httpMock.expectOne('/assets/resume.json');
         req.flush({ test: 'test' });
     });
+
+    it('getArrayBuffer() should return an arraybuffer object', () => {
+
+        service.getArrayBuffer('template.docx').then((result) => {
+            expect(result).toBeTruthy();
+            expect(typeof result).toBe('object');
+            expect(result instanceof ArrayBuffer).toBeTruthy();
+        });
+
+        const req = httpMock.expectOne('/assets/template.docx');
+        req.flush(new ArrayBuffer(8));
+    });
+
 });

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { WordExportService } from '../services/word-export.service';
+import { WordExportService } from '../services/word/word-export.service';
 import { DataService } from '../services/data/data.service';
 
 @Component({
     templateUrl: './dashboard.component.html',
-    styleUrls: [ './dashboard.component.css' ],
-    providers: [ DataService, WordExportService ]
+    styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
 
@@ -42,6 +41,7 @@ export class DashboardComponent implements OnInit {
         this.dataService.init().subscribe((response: any) => {
             this.original = response;
             this.populateData(response);
+            this.dataService.setOriginalData(response);
         });
     }
 
@@ -58,7 +58,6 @@ export class DashboardComponent implements OnInit {
     }
 
     downloadFile(input) {
-        const blob = new Blob([input.content], { type: 'application/msword' });
         const anchor = document.createElement('a');
         anchor.href = URL.createObjectURL(input.content);
         anchor.download = input.fileName;

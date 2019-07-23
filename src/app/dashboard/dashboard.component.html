@@ -2,7 +2,7 @@
 <div class="container-fluid d-none d-md-block">
     <div class="row">
         <div class="col-md-3">
-            <app-profile [data]="profile" (wordDownload)="downloadWord()"></app-profile>
+            <app-profile (wordDownload)="downloadWord()"></app-profile>
             <div style="margin-top: 15px">
                 <app-education [data]="education" [filterEnable]="filterEnable" (clear)="clearFilter()" (filterData)="filter($event)"></app-education>
             </div>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="container d-md-none no-padding">
-    <div class="col no-padding gutter"><app-profile [data]="profile"></app-profile></div>
+    <div class="col no-padding gutter"><app-profile (wordDownload)="downloadWord()"></app-profile></div>
     <div class="col no-padding gutter"><app-stats [data]="stats"></app-stats></div>
     <div class="col no-padding gutter"><app-skills class="col" [category]="category" [data]="skills" [filterEnable]="filterEnable" (clear)="clearFilter()" (select)="filter($event)"></app-skills></div>
     <div class="col no-padding gutter"><app-work-experience class="col" [data]="careers" [filterEnable]="filterEnable" (clear)="clearFilter()" (filterData)="filter($event)"></app-work-experience></div>

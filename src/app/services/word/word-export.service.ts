@@ -6,6 +6,7 @@ import * as jszip from 'jszip';
 import * as ImageModule from 'open-docxtemplater-image-module';
 import * as templater from 'docxtemplater';
 import { DataService } from '../data/data.service';
+import { ApiService } from '../api/api.service';
 
 
 @Injectable()
@@ -13,38 +14,25 @@ export class WordExportService {
 
     download = new Subject();
 
-    constructor(private dataService: DataService, private http: HttpClient) {}
+    constructor(private apiService: ApiService, private dataService: DataService, private http: HttpClient) {}
 
     async createDoc(data: any, options) {
         const { profile } = this.dataService.getData();
 
-        const fileName = `Resume for ${data.profile.fullName}${data.filter.length ? ' - ' + data.filter + ' experience' : ''}.doc`;
+        const fileName = `Resume for ${profile.fullName}${data.filter.length ? ' - ' + data.filter + ' experience' : ''}.doc`;
 
         const document = await this.initDocument(this.http, 'template.docx');
-        /*
-        const template = await this.getFile('template.docx');
-        const zip = new jszip(template);
 
-        const opts: any = {};
-        opts.centered = false;
-        opts.getImage = async (imageName) => await this.getImage(imageName);
-        opts.getSize = () => [120, 120];
-        const imageModule = new ImageModule(opts);
-
-        const document = new templater();
-        document.attachModule(imageModule);
-        document.loadZip(zip);
-*/
         document.setData(Object.assign({
             careers: data.careers.map((item) => {
                 item.dateEnd = this.formatDate(item.dateEnd);
                 item.dateStart = this.formatDate(item.dateStart);
                 return item;
             }),
-            contact: data.profile.contact,
+            contact: profile.contact,
             education: data.education,
             filter: data.filter.length ? data.filter : '',
-            full_name: data.profile.fullName,
+            full_name: profile.fullName,
             hasFilter: data.filter.length > 0,
             image: 'profile.jpg',
             introduction: data.introduction,
@@ -70,12 +58,6 @@ export class WordExportService {
         return `${dateArray[1]} ${dateArray[3]}`;
     }
 
-    getFile = async (fileName: string) => {
-        return new Promise((resolve) => {
-            this.http.get(`/assets/${fileName}`, { responseType: 'arraybuffer'}).subscribe((res) => resolve(res));
-        });
-    }
-
     getImage = async (fileName: string) => {
         return new Promise((resolve) => {
             this.http.get(`/assets/${fileName}`, { responseType: 'blob'}).subscribe((res) => resolve(res));
@@ -83,12 +65,14 @@ export class WordExportService {
     }
 
     initDocument = async (http: HttpClient, fileName: string) => {
-        const template = await this.getFile(fileName);
+        const template = await this.apiService.getArrayBuffer(fileName);
         const zip = new jszip(template);
 
         const opts: any = {};
         opts.centered = false;
-        opts.getImage = async (imageName) => await this.getImage(imageName);
+        opts.getImage = async (imageName) => {
+            return await this.getImage(imageName);
+        };
         opts.getSize = () => [120, 120];
         const imageModule = new ImageModule(opts);
 

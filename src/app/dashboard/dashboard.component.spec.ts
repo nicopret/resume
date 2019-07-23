@@ -8,6 +8,9 @@ import { SkillsComponent } from '../pages/skillsPage/skills.component';
 import { StatsComponent } from '../pages/statsPage/stats.component';
 import { WorkComponent } from '../pages/workPage/work.component';
 import { ModalComponent } from './modal/modal.component';
+import { DataService } from '../services/data/data.service';
+import { WordExportService } from '../services/word/word-export.service';
+import { ApiService } from '../services/api/api.service';
 
 describe('Dashboard Component', () => {
 
@@ -26,6 +29,7 @@ describe('Dashboard Component', () => {
                 StatsComponent,
                 WorkComponent
             ],
+            providers: [ ApiService, DataService, WordExportService ]
         }).compileComponents();
     }));
 

@@ -1,11 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 import { DataService } from './data.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { ApiService } from '../api/api.service';
+import { ExpectedConditions } from 'protractor';
 
 describe('Data service', () => {
 
     const mockResume = {
-        profile: {}
+        profile: { name: 'name' }
     };
 
     let httpTestingController: HttpTestingController;
@@ -14,7 +16,7 @@ describe('Data service', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [ HttpClientTestingModule ],
-            providers: [ DataService ]
+            providers: [ ApiService, DataService ]
         }).compileComponents();
 
         httpTestingController = TestBed.get(HttpTestingController);
@@ -41,4 +43,33 @@ describe('Data service', () => {
 
         req.flush(mockResume);
     });
+
+    it('getData() must return an object with the elements needed for the export', () => {
+        spyOn(service, 'getData').and.returnValue(mockResume);
+
+        const result = service.getData();
+        expect(result).toBeTruthy();
+        expect(typeof result).toBe('object');
+        expect(result.profile).toBeTruthy();
+
+    });
+
+    it('set the original data and update the data sections', () => {
+        const profileSpy = spyOn(service, 'setProfile');
+
+        service.setOriginalData(mockResume);
+
+        expect(service.originalData).toBe(mockResume);
+        expect(profileSpy).toHaveBeenCalled();
+    });
+
+    it('set the profile with the setProfile() function', () => {
+        const subjectSpy = spyOn(service.profileSubject, 'next');
+
+        service.setProfile(mockResume.profile);
+
+        expect(service.profileData).toBe(mockResume.profile);
+        expect(subjectSpy).toHaveBeenCalled();
+    });
+
 });

@@ -13,6 +13,9 @@ import { StatsComponent } from './pages/statsPage/stats.component';
 import { EducationComponent } from './pages/educationPage/education.component';
 import { SkillsComponent } from './pages/skillsPage/skills.component';
 import { ModalComponent } from './dashboard/modal/modal.component';
+import { DataService } from './services/data/data.service';
+import { WordExportService } from './services/word/word-export.service';
+import { ApiService } from './services/api/api.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,7 @@ import { ModalComponent } from './dashboard/modal/modal.component';
     AppRoutingModule
   ],
   exports: [ HttpClientModule ],
-  providers: [],
+  providers: [ ApiService, DataService, WordExportService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,7 +16,6 @@ export class DashboardComponent implements OnInit {
     category = 'technologies';
     careers;
     education;
-    profile;
     skills;
     stats = [];
 
@@ -71,7 +70,7 @@ export class DashboardComponent implements OnInit {
     export(input) {
         this.showWordRenderModal = input;
         this.wordExport.createDoc({ careers: this.careers, education: this.education, filter: this.currentSkill,
-            introduction: this.original.introduction, profile: this.profile, skills: this.skills, summary: this.original.summary },
+            introduction: this.original.introduction, skills: this.skills, summary: this.original.summary },
             this.wordRenderOptions);
     }
 
@@ -93,7 +92,7 @@ export class DashboardComponent implements OnInit {
             }
             return array;
         }, []);
-        this.populateData({ careers, education, profile: this.profile });
+        this.populateData({ careers, education });
     }
 
     async populateData(data) {
@@ -109,7 +108,6 @@ export class DashboardComponent implements OnInit {
             course.detail = course.detail ? course.detail : false;
             return course;
         });
-        this.profile = data.profile;
         this.stats = [
             this._statsYears(this.careers ? Math.floor(this.careers.reduce((sum, item) => {
                 sum += item.months;

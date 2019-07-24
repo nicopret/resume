@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { ApiService } from '../api/api.service';
+import { isNgTemplate } from '@angular/compiler';
 
 @Injectable()
 export class DataService {
@@ -17,6 +18,23 @@ export class DataService {
 
     init(): Observable<any> {
         return this.api.getJsonFile('resume.json');
+    }
+
+    filterData(filter) {
+        this.setEducation(this.filterSkills(this.filterValidArray(this.originalData.education, 'skills'), filter.category, filter.skill));
+    }
+
+    filterSkills(array, category, skill) {
+        return array.reduce((result, entry) => {
+            if (entry.skills.some((item) => item.category === category && item.skill === skill)) {
+                result.push(entry);
+            }
+            return result;
+        }, []);
+    }
+
+    filterValidArray(array, element) {
+        return array.filter((item) => item[element]);
     }
 
     getData() {

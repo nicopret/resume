@@ -7,6 +7,7 @@ import { ExpectedConditions } from 'protractor';
 describe('Data service', () => {
 
     const mockResume = {
+        education: { test: 'test' },
         profile: { name: 'name' }
     };
 
@@ -55,12 +56,23 @@ describe('Data service', () => {
     });
 
     it('set the original data and update the data sections', () => {
+        const educationSpy = spyOn(service, 'setEducation');
         const profileSpy = spyOn(service, 'setProfile');
 
         service.setOriginalData(mockResume);
 
         expect(service.originalData).toBe(mockResume);
+        expect(educationSpy).toHaveBeenCalled();
         expect(profileSpy).toHaveBeenCalled();
+    });
+
+    it('set the education with the setEducation() function', () => {
+        const subjectSpy = spyOn(service.educationSubject, 'next');
+
+        service.setEducation(mockResume.education);
+
+        expect(service.educationData).toBe(mockResume.education);
+        expect(subjectSpy).toHaveBeenCalled();
     });
 
     it('set the profile with the setProfile() function', () => {

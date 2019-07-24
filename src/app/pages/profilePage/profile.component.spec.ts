@@ -7,18 +7,32 @@ import { ApiService } from 'src/app/services/api/api.service';
 
 describe('Profile Component', () => {
 
+    let component: ProfileComponent;
+    let dataService: DataService;
+
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [ RouterTestingModule, HttpClientModule ],
             declarations: [ ProfileComponent ],
             providers: [ ApiService, DataService ]
         }).compileComponents();
+
+        component = TestBed.createComponent(ProfileComponent).componentInstance;
+        dataService = TestBed.get(DataService);
     }));
 
     it('should create the component', () => {
-        const fixture = TestBed.createComponent(ProfileComponent);
-        const component = fixture.debugElement.componentInstance;
         expect(component).toBeTruthy();
     });
 
+    it('ngOnInit() should call data service and populate the data', () => {
+        const fixture = TestBed.createComponent(ProfileComponent);
+        const serviceSpy = spyOn(dataService.profileSubject, 'next').and.returnValue({ profile: ''});
+
+        fixture.detectChanges();
+        dataService.setProfile({ profile: ''});
+        fixture.whenStable().then(() => {
+            expect(serviceSpy).toHaveBeenCalled();
+        });
+    });
 });

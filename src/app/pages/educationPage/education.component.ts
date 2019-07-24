@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
     styleUrls: [ './education.component.css' ]
 })
 export class EducationComponent {
-    @Input() data;
+    data;
     @Input() filterEnable: boolean = false;
     @Output() clear = new EventEmitter<any>();
     @Output() filterData = new EventEmitter<any>();

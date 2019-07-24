@@ -9,12 +9,8 @@ describe('Profile Component', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [
-                RouterTestingModule, HttpClientModule
-            ],
-            declarations: [
-                ProfileComponent
-            ],
+            imports: [ RouterTestingModule, HttpClientModule ],
+            declarations: [ ProfileComponent ],
             providers: [ ApiService, DataService ]
         }).compileComponents();
     }));

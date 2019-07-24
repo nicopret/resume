@@ -6,9 +6,11 @@ import { ApiService } from '../api/api.service';
 @Injectable()
 export class DataService {
 
+    educationData;
     originalData;
     profileData;
 
+    public educationSubject = new Subject();
     public profileSubject = new Subject();
 
     constructor(private api: ApiService, private http: HttpClient) {}
@@ -19,12 +21,19 @@ export class DataService {
 
     getData() {
         return {
+            education: this.educationData,
             profile: this.profileData
         };
     }
 
+    setEducation(input) {
+        this.educationData = input;
+        this.educationSubject.next(this.educationData);
+    }
+
     setOriginalData(input) {
         this.originalData = input;
+        this.setEducation(input.education);
         this.setProfile(input.profile);
     }
 

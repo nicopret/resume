@@ -6,8 +6,13 @@ import { ExpectedConditions } from 'protractor';
 
 describe('Data service', () => {
 
+    const mockFilterIndustry = {category: 'industries', skill: 'Finance'};
+    const mockFilterTechnology = {category: 'technologies', skill: 'JavaScript'};
     const mockResume = {
-        education: { test: 'test' },
+        education: [
+            { skills: [{ category: 'industries', skill: 'Finance'}] },
+            { skills: [{ category: 'technologies', skill: 'JavaScript'}] }
+        ],
         profile: { name: 'name' }
     };
 
@@ -66,6 +71,20 @@ describe('Data service', () => {
         expect(profileSpy).toHaveBeenCalled();
     });
 
+    it('filterData() must filter the data and populate the subject', () => {
+        const educationSpy = spyOn(service.educationSubject, 'next');
+        const skillsSpy = spyOn(service, 'filterSkills');
+        const validSpy = spyOn(service, 'filterValidArray');
+
+        service.originalData = mockResume;
+
+        service.filterData(mockFilterIndustry);
+
+        expect(educationSpy).toHaveBeenCalled();
+        expect(skillsSpy).toHaveBeenCalled();
+        expect(validSpy).toHaveBeenCalled();
+    });
+
     it('set the education with the setEducation() function', () => {
         const subjectSpy = spyOn(service.educationSubject, 'next');
 
@@ -82,6 +101,24 @@ describe('Data service', () => {
 
         expect(service.profileData).toBe(mockResume.profile);
         expect(subjectSpy).toHaveBeenCalled();
+    });
+
+    it('filterSkillsArray() should return an array containing only the skills', () => {
+
+        const filteredArray = service.filterSkills(mockResume.education, mockFilterIndustry.category, mockFilterIndustry.skill);
+
+        expect(filteredArray).toBeTruthy();
+        expect(filteredArray.length).toBe(1);
+    });
+
+    it('filterValidArray() should return an array containing only items with the specified element', () => {
+        const rawArray = [{ item: 'one', field: 'one' },
+            { item: 'two'}];
+
+        const filteredArray = service.filterValidArray(rawArray, 'field');
+
+        expect(filteredArray).toBeTruthy();
+        expect(filteredArray.length).toBe(1);
     });
 
 });

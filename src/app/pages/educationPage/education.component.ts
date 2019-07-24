@@ -23,7 +23,7 @@ export class EducationComponent implements OnInit {
     }
 
     filter(item) {
-        this.filterData.next(item);
+        this.dataService.filterData(item);
     }
 
     toggleDisplay(item) {

@@ -10,12 +10,12 @@ export class DataService {
     originalData;
     profileData;
 
-    public educationSubject = new Subject();
-    public profileSubject = new Subject();
+    educationSubject = new Subject();
+    profileSubject = new Subject();
 
     constructor(private api: ApiService, private http: HttpClient) {}
 
-    public init(): Observable<any> {
+    init(): Observable<any> {
         return this.api.getJsonFile('resume.json');
     }
 

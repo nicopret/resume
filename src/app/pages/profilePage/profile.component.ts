@@ -8,6 +8,7 @@ import { DataService } from 'src/app/services/data/data.service';
 })
 export class ProfileComponent implements OnInit {
     data;
+
     @Output() wordDownload = new EventEmitter();
 
     constructor(private dataService: DataService) {}

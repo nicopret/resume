@@ -1,22 +1,29 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
     selector: 'app-work-experience',
     templateUrl: './work.component.html',
     styleUrls: [ './work.component.css' ]
 })
-export class WorkComponent {
-    @Input() data;
-    @Input() filterEnable: boolean = false;
-    @Output() clear = new EventEmitter<any>();
-    @Output() filterData = new EventEmitter<any>();
+export class WorkComponent implements OnInit {
+    data;
+    filterEnable = false;
+
+    constructor(private dataService: DataService) {}
+
+    ngOnInit() {
+        this.dataService.careerSubject.subscribe((result) => this.data = result);
+    }
 
     clearFilter() {
-        this.clear.next();
+        this.dataService.clearFilter();
+        this.filterEnable = false;
     }
 
     filter(category, skill) {
-        this.filterData.next({ category, skill });
+        this.dataService.filterData({ category, skill });
+        this.filterEnable = true;
     }
 
     toggleDisplay(item) {

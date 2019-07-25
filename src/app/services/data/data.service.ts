@@ -2,21 +2,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { ApiService } from '../api/api.service';
-import { isNgTemplate } from '@angular/compiler';
 
 @Injectable()
 export class DataService {
 
+    carreerData;
     educationData;
     originalData;
     profileData;
 
+    careerSubject = new Subject();
     educationSubject = new Subject();
     profileSubject = new Subject();
+    workSubject = new Subject();
 
     constructor(private api: ApiService, private http: HttpClient) {}
 
     clearFilter() {
+        this.setCareer(this.originalData.careers);
         this.setEducation(this.originalData.education);
     }
 
@@ -24,7 +27,23 @@ export class DataService {
         return this.api.getJsonFile('resume.json');
     }
 
+    filterCareer(filter) {
+        return filter.category === 'industries'
+            ? this.originalData.careers.filter((item) => item.industry === filter.skill)
+            : this.originalData.careers.reduce((array, career) => {
+                let alreadyPushed = false;
+                career.projects.forEach((item) => {
+                    if (item[filter.category] && item[filter.category].indexOf(filter.skill) > -1 && !alreadyPushed) {
+                        array.push(career);
+                        alreadyPushed = true;
+                    }
+                });
+                return array;
+            }, []);
+    }
+
     filterData(filter) {
+        this.setCareer(this.filterCareer(filter));
         this.setEducation(this.filterSkills(this.filterValidArray(this.originalData.education, 'skills'), filter.category, filter.skill));
     }
 
@@ -43,9 +62,15 @@ export class DataService {
 
     getData() {
         return {
+            careers: this.carreerData,
             education: this.educationData,
             profile: this.profileData
         };
+    }
+
+    setCareer(input) {
+        this.carreerData = input;
+        this.careerSubject.next(this.carreerData);
     }
 
     setEducation(input) {
@@ -55,6 +80,7 @@ export class DataService {
 
     setOriginalData(input) {
         this.originalData = input;
+        this.setCareer(input.careers);
         this.setEducation(input.education);
         this.setProfile(input.profile);
     }

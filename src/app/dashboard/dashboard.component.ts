@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
     original: any;
 
     category = 'technologies';
-    careers;
+    careers = [];
     education = [];
     skills;
     stats = [];
@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
     clearFilter() {
         this.currentSkill = '';
         this.filterEnable = false;
-        this.original.careers.forEach((item) => item.detail = false);
+//        this.original.careers.forEach((item) => item.detail = false);
         this.populateData(this.original);
     }
 
@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
 
     export(input) {
         this.showWordRenderModal = input;
-        this.wordExport.createDoc({ careers: this.careers, filter: this.currentSkill,
+        this.wordExport.createDoc({ filter: this.currentSkill,
             introduction: this.original.introduction, skills: this.skills, summary: this.original.summary },
             this.wordRenderOptions);
     }
@@ -77,6 +77,7 @@ export class DashboardComponent implements OnInit {
         this.category = item.category;
         this.currentSkill = item.skill;
         this.filterEnable = true;
+        /*
         const careers = JSON.parse(JSON.stringify(this.original.careers)).reduce((array, career) => {
             if (this._validItem(career, item.category, item.skill)) {
                 career.detail = true;
@@ -85,10 +86,11 @@ export class DashboardComponent implements OnInit {
             return array;
         }, []);
         this.populateData({ careers });
+        */
     }
 
     async populateData(data) {
-        this.careers = await this._populateCareers(data.careers);
+//        this.careers = await this._populateCareers(data.careers);
         this.skills = this.careers.reduce((res, item) => {
             res.industries = this._populateItem(res.industries, item.industry, item.months);
             res.project = this._populateArray(res.project, this._reduceCategories(item.projects, 'project'), item.months);

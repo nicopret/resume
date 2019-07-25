@@ -9,6 +9,19 @@ describe('Data service', () => {
     const mockFilterIndustry = {category: 'industries', skill: 'Finance'};
     const mockFilterTechnology = {category: 'technologies', skill: 'JavaScript'};
     const mockResume = {
+        careers: [{
+            industry: 'Property',
+            projects: [{
+                'technologies': [ 'Java', 'JavaScript' ]
+            }, {
+                'technologies': [ 'JavaScript' ]
+            }]
+        }, {
+            industry: 'Finance',
+            projects: [{
+                'technologies': [ 'HTML' ]
+            }]
+        }],
         education: [
             { skills: [{ category: 'industries', skill: 'Finance'}] },
             { skills: [{ category: 'technologies', skill: 'JavaScript'}] }
@@ -50,8 +63,20 @@ describe('Data service', () => {
         req.flush(mockResume);
     });
 
+    it('clearFilter() reset to the original data', () => {
+        const careerSpy = spyOn(service, 'setCareer');
+        const educationSpy = spyOn(service, 'setEducation');
+
+        service.originalData = mockResume;
+        service.clearFilter();
+
+        expect(careerSpy).toHaveBeenCalled();
+        expect(educationSpy).toHaveBeenCalled();
+    });
+
     it('getData() must return an object with the elements needed for the export', () => {
-        spyOn(service, 'getData').and.returnValue(mockResume);
+        service.educationData = mockResume.education;
+        service.profileData = mockResume.profile;
 
         const result = service.getData();
         expect(result).toBeTruthy();
@@ -74,12 +99,14 @@ describe('Data service', () => {
     it('filterData() must filter the data and populate the subject', () => {
         const educationSpy = spyOn(service.educationSubject, 'next');
         const skillsSpy = spyOn(service, 'filterSkills');
+        const careerFilterSpy = spyOn(service, 'filterCareer').and.returnValue([]);
         const validSpy = spyOn(service, 'filterValidArray');
 
         service.originalData = mockResume;
 
-        service.filterData(mockFilterIndustry);
+        service.filterData(mockFilterTechnology);
 
+        expect(careerFilterSpy).toHaveBeenCalled();
         expect(educationSpy).toHaveBeenCalled();
         expect(skillsSpy).toHaveBeenCalled();
         expect(validSpy).toHaveBeenCalled();
@@ -101,6 +128,24 @@ describe('Data service', () => {
 
         expect(service.profileData).toBe(mockResume.profile);
         expect(subjectSpy).toHaveBeenCalled();
+    });
+
+    it ('filterCareer() with category as industry', () => {
+        service.originalData = mockResume;
+
+        const array = service.filterCareer(mockFilterIndustry);
+
+        expect(array).toBeTruthy();
+        expect(array.length).toBe(1);
+    });
+
+    it ('filterCareer() with category as technology', () => {
+        service.originalData = mockResume;
+
+        const array = service.filterCareer(mockFilterTechnology);
+
+        expect(array).toBeTruthy();
+        expect(array.length).toBe(1);
     });
 
     it('filterSkillsArray() should return an array containing only the skills', () => {

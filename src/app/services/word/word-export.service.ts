@@ -17,14 +17,14 @@ export class WordExportService {
     constructor(private apiService: ApiService, private dataService: DataService, private http: HttpClient) {}
 
     async createDoc(data: any, options) {
-        const { education, profile } = this.dataService.getData();
+        const { careers, education, profile } = this.dataService.getData();
 
         const fileName = `Resume for ${profile.fullName}${data.filter.length ? ' - ' + data.filter + ' experience' : ''}.doc`;
 
         const document = await this.initDocument(this.http, 'template.docx');
 
         document.setData(Object.assign({
-            careers: data.careers.map((item) => {
+            careers: careers.map((item) => {
                 item.dateEnd = this.formatDate(item.dateEnd);
                 item.dateStart = this.formatDate(item.dateStart);
                 return item;

@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
 
     category = 'technologies';
     careers;
-    education;
+    education = [];
     skills;
     stats = [];
 
@@ -48,7 +48,6 @@ export class DashboardComponent implements OnInit {
         this.currentSkill = '';
         this.filterEnable = false;
         this.original.careers.forEach((item) => item.detail = false);
-        this.original.education.forEach((item) => item.detail = false);
         this.populateData(this.original);
     }
 
@@ -69,7 +68,7 @@ export class DashboardComponent implements OnInit {
 
     export(input) {
         this.showWordRenderModal = input;
-        this.wordExport.createDoc({ careers: this.careers, education: this.education, filter: this.currentSkill,
+        this.wordExport.createDoc({ careers: this.careers, filter: this.currentSkill,
             introduction: this.original.introduction, skills: this.skills, summary: this.original.summary },
             this.wordRenderOptions);
     }
@@ -85,14 +84,7 @@ export class DashboardComponent implements OnInit {
             }
             return array;
         }, []);
-        const education = JSON.parse(JSON.stringify(this.original.education)).reduce((array, course) => {
-            if (this._validSkill(course, item.skill)) {
-                course.detail = true;
-                array.push(course);
-            }
-            return array;
-        }, []);
-        this.populateData({ careers, education });
+        this.populateData({ careers });
     }
 
     async populateData(data) {
@@ -104,10 +96,6 @@ export class DashboardComponent implements OnInit {
             res.technologies = this._populateArray(res.technologies, this._reduceCategories(item.projects, 'technologies'), item.months);
             return res;
         }, { industries: [], project: [], services: [], technologies: []});
-        this.education = data.education.map((course) => {
-            course.detail = course.detail ? course.detail : false;
-            return course;
-        });
         this.stats = [
             this._statsYears(this.careers ? Math.floor(this.careers.reduce((sum, item) => {
                 sum += item.months;

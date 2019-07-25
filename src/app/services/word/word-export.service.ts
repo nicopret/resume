@@ -17,7 +17,7 @@ export class WordExportService {
     constructor(private apiService: ApiService, private dataService: DataService, private http: HttpClient) {}
 
     async createDoc(data: any, options) {
-        const { profile } = this.dataService.getData();
+        const { education, profile } = this.dataService.getData();
 
         const fileName = `Resume for ${profile.fullName}${data.filter.length ? ' - ' + data.filter + ' experience' : ''}.doc`;
 
@@ -30,7 +30,7 @@ export class WordExportService {
                 return item;
             }),
             contact: profile.contact,
-            education: data.education,
+            education,
             filter: data.filter.length ? data.filter : '',
             full_name: profile.fullName,
             hasFilter: data.filter.length > 0,

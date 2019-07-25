@@ -7,18 +7,62 @@ import { HttpClientModule } from '@angular/common/http';
 
 describe('Education Component', () => {
 
+    let component: EducationComponent;
+    let dataService: DataService;
+    let fixture;
+
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [ RouterTestingModule, HttpClientModule ],
             declarations: [ EducationComponent ],
             providers: [ ApiService, DataService ]
         }).compileComponents();
+
+        component = TestBed.createComponent(EducationComponent).componentInstance;
+        dataService = TestBed.get(DataService);
+        fixture = TestBed.createComponent(EducationComponent);
     }));
 
     it('should create the component', () => {
-        const fixture = TestBed.createComponent(EducationComponent);
-        const component = fixture.debugElement.componentInstance;
         expect(component).toBeTruthy();
+    });
+
+    it('ngOninit() should call data service and populate data', () => {
+        const serviceSpy = spyOn(dataService.educationSubject, 'next');
+
+        fixture.detectChanges();
+        dataService.setEducation({ education: '' });
+        fixture.whenStable().then(() => {
+            expect(serviceSpy).toHaveBeenCalled();
+        });
+    });
+
+    it('clearFilter()', () => {
+        const dataSpy = spyOn(dataService, 'clearFilter');
+
+        component.clearFilter();
+
+        expect(dataSpy).toHaveBeenCalled();
+        expect(component.filterEnable).toBeFalsy();
+    });
+
+    it('filter()', () => {
+        const dataSpy = spyOn(dataService, 'filterData');
+
+        component.filter({});
+
+        expect(dataSpy).toHaveBeenCalled();
+        expect(component.filterEnable).toBeTruthy();
+    });
+
+    it('toggleDisplay()', () => {
+        const item = {
+            detail: true
+        };
+
+        component.toggleDisplay(item);
+
+        expect(item.detail).toBeFalsy();
     });
 
 });

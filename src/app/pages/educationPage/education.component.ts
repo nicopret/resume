@@ -8,9 +8,7 @@ import { DataService } from 'src/app/services/data/data.service';
 })
 export class EducationComponent implements OnInit {
     data;
-    @Input() filterEnable = false;
-    @Output() clear = new EventEmitter<any>();
-    @Output() filterData = new EventEmitter<any>();
+    filterEnable = false;
 
     constructor(private dataService: DataService) {}
 
@@ -19,11 +17,13 @@ export class EducationComponent implements OnInit {
     }
 
     clearFilter() {
-        this.clear.emit();
+        this.dataService.clearFilter();
+        this.filterEnable = false;
     }
 
     filter(item) {
         this.dataService.filterData(item);
+        this.filterEnable = true;
     }
 
     toggleDisplay(item) {

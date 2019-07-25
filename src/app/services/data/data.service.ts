@@ -16,6 +16,10 @@ export class DataService {
 
     constructor(private api: ApiService, private http: HttpClient) {}
 
+    clearFilter() {
+        this.setEducation(this.originalData.education);
+    }
+
     init(): Observable<any> {
         return this.api.getJsonFile('resume.json');
     }

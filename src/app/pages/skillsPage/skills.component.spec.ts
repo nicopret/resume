@@ -36,6 +36,7 @@ describe('Skills Component', () => {
     it('ngOninit() should call data service and populate data', () => {
         const careerSkill = spyOn(dataService.careerSubject, 'next');
         const skillSpy = spyOn(dataService.skillsSubject, 'next');
+        const statSpy = spyOn(dataService, 'setStats');
         const spy = spyOn(dataService, 'setSkills');
 
         fixture.detectChanges();
@@ -43,6 +44,7 @@ describe('Skills Component', () => {
         fixture.whenStable().then(() => {
             expect(careerSkill).toHaveBeenCalled();
             expect(skillSpy).toHaveBeenCalled();
+            expect(statSpy).toHaveBeenCalled();
             expect(spy).toHaveBeenCalled();
         });
     });

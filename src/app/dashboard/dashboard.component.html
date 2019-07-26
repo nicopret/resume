@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-9">
             <div class="row">
-                <app-stats class="col" [data]="stats"></app-stats>
+                <app-stats class="col"></app-stats>
             </div>
             <div class="row">
                 <app-skills class="col"></app-skills>
@@ -21,7 +21,7 @@
 
 <div class="container d-md-none no-padding">
     <div class="col no-padding gutter"><app-profile (wordDownload)="downloadWord()"></app-profile></div>
-    <div class="col no-padding gutter"><app-stats [data]="stats"></app-stats></div>
+    <div class="col no-padding gutter"><app-stats></app-stats></div>
     <div class="col no-padding gutter"><app-skills class="col"></app-skills></div>
     <div class="col no-padding gutter"><app-work-experience class="col"></app-work-experience></div>
     <div class="col no-padding gutter"><app-education></app-education></div>

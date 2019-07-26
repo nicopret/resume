@@ -3,6 +3,15 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ArrayUtilService {
 
+    displayCourseStats(array) {
+        return {
+            description: array && array.length === 0 ? 'Maybe soon.' : array.length > 1 ? 'Distance learning' : `Through ${array[0].institution}`,
+            metric: array && array.length === 0 ? 'No formal courses' : array.length > 1 ? 'Courses' : 'Course',
+            type: 'secondary',
+            value: array && array.length > 0 ? array.length : ''
+        };
+    };
+
     populateArray(array, skills, value) {
         skills.forEach((skill) => {
             array = this.validItem(array, skill, value);

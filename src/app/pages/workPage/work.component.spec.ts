@@ -32,12 +32,14 @@ describe('Work Component', () => {
     it('ngOnInit() should call data service and populate data', () => {
         const serviceSpy = spyOn(dataService.careerSubject, 'next');
         const skillSpy = spyOn(dataService, 'setSkills').and.returnValue([]);
+        const statSpy = spyOn(dataService, 'setStats');
 
         fixture.detectChanges();
         dataService.setCareer({});
         fixture.whenStable().then(() => {
             expect(serviceSpy).toHaveBeenCalled();
             expect(skillSpy).toHaveBeenCalled();
+            expect(statSpy).toHaveBeenCalled();
         });
     });
 

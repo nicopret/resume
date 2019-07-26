@@ -1,5 +1,5 @@
 
-<div class="container-fluid d-none d-md-block">
+<div class="container-fluid d-none d-md-block" *ngIf="data">
     <div class="row">
         <div class="col" *ngFor="let item of data">
             <div class="card">
@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<div class="container no-padding d-md-none">
+<div class="container no-padding d-md-none" *ngIf="data">
     <div class="col no-padding" *ngFor="let item of data">
         <div class="card">
             <div class="card-heading text-white" [ngClass]="{'bg-info': item.type == 'info', 'bg-secondary': item.type == 'secondary', 'bg-success': item.type == 'success', 'bg-warning': item.type == 'warning'}">

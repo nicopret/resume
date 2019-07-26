@@ -12,4 +12,12 @@ export class DateUtilService {
         return ((end.getFullYear() - start.getFullYear()) * 12) + (end.getMonth() - start.getMonth()) + 1;
     }
 
+    displayYearString(years, filterEnable, currentSkill) {
+        return {
+            description: filterEnable ? `${currentSkill} experience` : 'Total work experience',
+            metric: years === 0 ? '' : years > 1 ? 'Years' : 'Year',
+            type: 'info',
+            value: years > 0 ? years : 'No'
+        };
+    };
 }

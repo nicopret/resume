@@ -106,9 +106,10 @@ describe('Data service', () => {
     });
 
     it('filterData() must filter the data and populate the subject', () => {
+        const careerFilterSpy = spyOn(service, 'filterCareer').and.returnValue([]);
         const educationSpy = spyOn(service.educationSubject, 'next');
         const skillsSpy = spyOn(service, 'filterSkills');
-        const careerFilterSpy = spyOn(service, 'filterCareer').and.returnValue([]);
+        const statSpy = spyOn(service, 'setStats');
         const validSpy = spyOn(service, 'filterValidArray');
 
         service.originalData = mockResume;
@@ -118,6 +119,7 @@ describe('Data service', () => {
         expect(careerFilterSpy).toHaveBeenCalled();
         expect(educationSpy).toHaveBeenCalled();
         expect(skillsSpy).toHaveBeenCalled();
+        expect(statSpy).toHaveBeenCalled();
         expect(validSpy).toHaveBeenCalled();
     });
 

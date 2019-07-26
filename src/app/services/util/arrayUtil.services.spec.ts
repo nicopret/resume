@@ -137,3 +137,37 @@ describe('arrayUtil service for category reduction', () => {
         expect(array.length).toBe(7);
     });
 });
+
+describe('display stat strings', () => {
+
+    let service: ArrayUtilService;
+
+    beforeEach(async() => {
+        TestBed.configureTestingModule({
+            providers: [ ArrayUtilService ]
+        }).compileComponents();
+
+        service = TestBed.get(ArrayUtilService);
+    });
+
+    it('displayCourseStats() with empty array', () => {
+        const obj = service.displayCourseStats([]);
+        
+        expect(obj).toBeTruthy();
+        expect(JSON.stringify(obj)).toBe(JSON.stringify({description: 'Maybe soon.', metric: 'No formal courses', type: 'secondary', value: ''}));
+    });
+
+    it('displayCourseStats() with single item array', () => {
+        const obj = service.displayCourseStats([1]);
+
+        expect(obj).toBeTruthy();
+        expect(JSON.stringify(obj)).toBe(JSON.stringify({description: 'Through undefined', metric: 'Course', type: 'secondary', value: 1}));
+    });
+
+    it('displayCourseStats() with three item array', () => {
+        const obj = service.displayCourseStats([1, 2, 3]);
+
+        expect(obj).toBeTruthy();
+        expect(JSON.stringify(obj)).toBe(JSON.stringify({description: 'Distance learning', metric: 'Courses', type: 'secondary', value: 3}));
+    });
+});

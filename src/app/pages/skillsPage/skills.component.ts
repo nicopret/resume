@@ -28,6 +28,7 @@ export class SkillsComponent implements OnInit {
     constructor(private dataService: DataService) {}
 
     ngOnInit() {
+        this.dataService.filterEnableSubject.subscribe((result: boolean) => this.filterEnable = result);
         this.dataService.skillsSubject.subscribe((result) => {
             this.data = result;
             Object.keys(this.data).forEach((key) => {

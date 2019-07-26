@@ -14,6 +14,7 @@ export class WorkComponent implements OnInit {
 
     ngOnInit() {
         this.dataService.careerSubject.subscribe((result) => this.data = result);
+        this.dataService.filterEnableSubject.subscribe((result: boolean) => this.filterEnable = result);
     }
 
     clearFilter() {

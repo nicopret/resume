@@ -4,6 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { ApiService } from '../api/api.service';
 import { ArrayUtilService } from '../util/arrayUtil.service';
 import { DateUtilService } from '../util/dateUtil.service';
+import { Services } from '@angular/core/src/view';
 
 describe('Data service', () => {
 
@@ -29,7 +30,9 @@ describe('Data service', () => {
             { skills: [{ category: 'industries', skill: 'Finance'}] },
             { skills: [{ category: 'technologies', skill: 'JavaScript'}] }
         ],
-        profile: { name: 'name' }
+        introduction: {},
+        profile: { name: 'name' },
+        summary: {}
     };
 
     let dateService: DateUtilService;
@@ -80,7 +83,9 @@ describe('Data service', () => {
     });
 
     it('getData() must return an object with the elements needed for the export', () => {
+        service.carreerData = mockResume.careers;
         service.educationData = mockResume.education;
+        service.originalData = mockResume;
         service.profileData = mockResume.profile;
 
         const result = service.getData();

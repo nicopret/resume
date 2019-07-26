@@ -14,6 +14,7 @@ export class EducationComponent implements OnInit {
 
     ngOnInit() {
         this.dataService.educationSubject.subscribe((result) => this.data = result);
+        this.dataService.filterEnableSubject.subscribe((result: boolean) => this.filterEnable = result);
     }
 
     clearFilter() {

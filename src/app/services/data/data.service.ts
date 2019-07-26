@@ -77,7 +77,10 @@ export class DataService {
         return {
             careers: this.carreerData,
             education: this.educationData,
-            profile: this.profileData
+            introduction: this.originalData.introduction,
+            profile: this.profileData,
+            skills: this.skillsData,
+            summary: this.originalData.summary
         };
     }
 
@@ -87,7 +90,6 @@ export class DataService {
         this.skillsData = this.setSkills();
         this.skillsSubject.next(this.skillsData);
         this.statsData = this.setStats();
-        console.log(this.statsData);
         this.statsSubject.next(this.statsData);
     }
 

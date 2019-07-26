@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, ViewChild, Output, EventEmitter, OnInit } from '@angular/core';
 
 import { Chart } from 'chart.js';
 import { DataService } from 'src/app/services/data/data.service';
@@ -8,11 +8,11 @@ import { DataService } from 'src/app/services/data/data.service';
     templateUrl: './skills.component.html',
     styleUrls: [ './skills.component.css' ]
 })
-export class SkillsComponent implements OnChanges {
+export class SkillsComponent implements OnInit {
     @ViewChild('lineChart') private chartRef;
-    @Input() category = 'technologies';
+    category = 'technologies';
     data;
-    @Input() filterEnable = false;
+    filterEnable = false;
     @Output() clear = new EventEmitter<any>();
     @Output() select = new EventEmitter<any>();
 
@@ -27,7 +27,7 @@ export class SkillsComponent implements OnChanges {
 
     constructor(private dataService: DataService) {}
 
-    ngOnChanges() {
+    ngOnInit() {
         this.dataService.skillsSubject.subscribe((result) => {
             this.data = result;
             Object.keys(this.data).forEach((key) => {
@@ -40,11 +40,13 @@ export class SkillsComponent implements OnChanges {
     }
 
     clearFilter() {
-        this.clear.emit();
+        this.dataService.clearFilter();
+        this.filterEnable = false;
     }
 
-    selectSkill(skill) {
-        this.select.next({ category: this.category, skill });
+    filter(skill) {
+        this.dataService.filterData({ category: this.category, skill });
+        this.filterEnable = true;
     }
 
     setList(item) {

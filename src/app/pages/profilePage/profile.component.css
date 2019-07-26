@@ -1,4 +1,9 @@
 
+.card-body > img {
+    margin-bottom: 12px;
+    max-width: 200px;
+}
+
 .card-footer {
     font-size: 160%;
     overflow: hidden;

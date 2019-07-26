@@ -29,7 +29,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of list">
-                    <td class="text-warning"><h5 (click)="selectSkill(item.name)">{{ item.name }}</h5></td>
+                    <td class="text-warning"><h5 (click)="filter(item.name)">{{ item.name }}</h5></td>
                     <td class="text-right">{{ item.years }}</td>
                 </tr>
             </tbody>

@@ -9,6 +9,10 @@ import { DateUtilService } from 'src/app/services/util/dateUtil.service';
 
 describe('Skills Component', () => {
 
+    let component: SkillsComponent;
+    let dataService: DataService;
+    let fixture;
+
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
@@ -19,12 +23,46 @@ describe('Skills Component', () => {
             ],
             providers: [ ApiService, ArrayUtilService, DataService, DateUtilService ]
         }).compileComponents();
+
+        component = TestBed.createComponent(SkillsComponent).componentInstance;
+        dataService = TestBed.get(DataService);
+        fixture = TestBed.createComponent(SkillsComponent);
     }));
 
     it('should create the component', () => {
-        const fixture = TestBed.createComponent(SkillsComponent);
-        const component = fixture.debugElement.componentInstance;
         expect(component).toBeTruthy();
+    });
+
+    it('ngOninit() should call data service and populate data', () => {
+        const careerSkill = spyOn(dataService.careerSubject, 'next');
+        const skillSpy = spyOn(dataService.skillsSubject, 'next');
+        const spy = spyOn(dataService, 'setSkills');
+
+        fixture.detectChanges();
+        dataService.setCareer({ careers: '' });
+        fixture.whenStable().then(() => {
+            expect(careerSkill).toHaveBeenCalled();
+            expect(skillSpy).toHaveBeenCalled();
+            expect(spy).toHaveBeenCalled();
+        });
+    });
+
+    it('clearFilter()', () => {
+        const dataSpy = spyOn(dataService, 'clearFilter');
+
+        component.clearFilter();
+
+        expect(dataSpy).toHaveBeenCalled();
+        expect(component.filterEnable).toBeFalsy();
+    });
+
+    it('filter()', () => {
+        const dataSpy = spyOn(dataService, 'filterData');
+
+        component.filter({});
+
+        expect(dataSpy).toHaveBeenCalled();
+        expect(component.filterEnable).toBeTruthy();
     });
 
 });

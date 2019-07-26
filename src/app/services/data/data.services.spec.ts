@@ -11,6 +11,8 @@ describe('Data service', () => {
     const mockFilterTechnology = {category: 'technologies', skill: 'JavaScript'};
     const mockResume = {
         careers: [{
+            dateEnd: '2017-02-28',
+            dateStart: '2014-05-01',
             industry: 'Property',
             projects: [{
                 'technologies': [ 'Java', 'JavaScript' ]
@@ -30,6 +32,7 @@ describe('Data service', () => {
         profile: { name: 'name' }
     };
 
+    let dateService: DateUtilService;
     let httpTestingController: HttpTestingController;
     let service: DataService;
 
@@ -39,6 +42,7 @@ describe('Data service', () => {
             providers: [ ApiService, ArrayUtilService, DataService, DateUtilService ]
         }).compileComponents();
 
+        dateService = TestBed.get(DateUtilService);
         httpTestingController = TestBed.get(HttpTestingController);
         service = TestBed.get(DataService);
     }));
@@ -88,6 +92,7 @@ describe('Data service', () => {
 
     it('set the original data and update the data sections', () => {
         const careerSpy = spyOn(service, 'setCareer');
+        const dateSpy = spyOn(dateService, 'calculateDate').and.returnValue(new Date());
         const educationSpy = spyOn(service, 'setEducation');
         const profileSpy = spyOn(service, 'setProfile');
 
@@ -95,6 +100,7 @@ describe('Data service', () => {
 
         expect(service.originalData).toBe(mockResume);
         expect(careerSpy).toHaveBeenCalled();
+        expect(dateSpy).toHaveBeenCalled();
         expect(educationSpy).toHaveBeenCalled();
         expect(profileSpy).toHaveBeenCalled();
     });
@@ -169,4 +175,11 @@ describe('Data service', () => {
         expect(filteredArray.length).toBe(1);
     });
 
+    it('setSkills() reduce the careers to the skills array', () => {
+        service.carreerData = mockResume.careers;
+
+        let array = service.setSkills();
+
+        expect(array).toBeTruthy();
+    });
 });

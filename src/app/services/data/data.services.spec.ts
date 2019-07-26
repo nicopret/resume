@@ -87,12 +87,14 @@ describe('Data service', () => {
     });
 
     it('set the original data and update the data sections', () => {
+        const careerSpy = spyOn(service, 'setCareer');
         const educationSpy = spyOn(service, 'setEducation');
         const profileSpy = spyOn(service, 'setProfile');
 
         service.setOriginalData(mockResume);
 
         expect(service.originalData).toBe(mockResume);
+        expect(careerSpy).toHaveBeenCalled();
         expect(educationSpy).toHaveBeenCalled();
         expect(profileSpy).toHaveBeenCalled();
     });

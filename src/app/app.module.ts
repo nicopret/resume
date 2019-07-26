@@ -16,6 +16,7 @@ import { ModalComponent } from './dashboard/modal/modal.component';
 import { DataService } from './services/data/data.service';
 import { WordExportService } from './services/word/word-export.service';
 import { ApiService } from './services/api/api.service';
+import { ArrayUtilService } from './services/util/arrayUtil.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { ApiService } from './services/api/api.service';
     AppRoutingModule
   ],
   exports: [ HttpClientModule ],
-  providers: [ ApiService, DataService, WordExportService ],
+  providers: [ ApiService, ArrayUtilService, DataService, WordExportService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

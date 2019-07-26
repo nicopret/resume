@@ -12,6 +12,7 @@ import { DataService } from '../services/data/data.service';
 import { WordExportService } from '../services/word/word-export.service';
 import { ApiService } from '../services/api/api.service';
 import { ArrayUtilService } from '../services/util/arrayUtil.service';
+import { DateUtilService } from '../services/util/dateUtil.service';
 
 describe('Dashboard Component', () => {
 
@@ -30,7 +31,7 @@ describe('Dashboard Component', () => {
                 StatsComponent,
                 WorkComponent
             ],
-            providers: [ ApiService, ArrayUtilService, DataService, WordExportService ]
+            providers: [ ApiService, ArrayUtilService, DataService, DateUtilService, WordExportService ]
         }).compileComponents();
     }));
 

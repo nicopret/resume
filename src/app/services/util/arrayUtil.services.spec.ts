@@ -1,6 +1,5 @@
-import { async, TestBed, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { ArrayUtilService } from './arrayUtil.service';
-import { ExpectedConditions } from 'protractor';
 
 describe('arrayUtil service for single level arrays', () => {
 

@@ -17,7 +17,7 @@ export class WordExportService {
     constructor(private apiService: ApiService, private dataService: DataService, private http: HttpClient) {}
 
     async createDoc(data: any, options) {
-        const { careers, education, profile } = this.dataService.getData();
+        const { careers, education, introduction, profile, skills, summary } = this.dataService.getData();
 
         const fileName = `Resume for ${profile.fullName}${data.filter.length ? ' - ' + data.filter + ' experience' : ''}.doc`;
 
@@ -35,10 +35,10 @@ export class WordExportService {
             full_name: profile.fullName,
             hasFilter: data.filter.length > 0,
             image: 'profile.jpg',
-            introduction: data.introduction,
-            skills: Object.keys(data.skills).reduce((array, key) => array.concat(data.skills[key]), [])
+            introduction: introduction,
+            skills: Object.keys(skills).reduce((array, key) => array.concat(skills[key]), [])
                 .sort((a, b) => a.years > b.years ? -1 : a.years < b.years ? 1 : a.name > b.name ? 1 : -1),
-            summary: data.summary
+            summary: summary
         }, options));
         document.render();
 

@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { Chart } from 'chart.js';
+import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
     selector: 'app-skills',
@@ -10,7 +11,7 @@ import { Chart } from 'chart.js';
 export class SkillsComponent implements OnChanges {
     @ViewChild('lineChart') private chartRef;
     @Input() category = 'technologies';
-    @Input() data;
+    data;
     @Input() filterEnable = false;
     @Output() clear = new EventEmitter<any>();
     @Output() select = new EventEmitter<any>();
@@ -24,15 +25,18 @@ export class SkillsComponent implements OnChanges {
     };
     list: [];
 
+    constructor(private dataService: DataService) {}
+
     ngOnChanges() {
-        if (this.data) {
+        this.dataService.skillsSubject.subscribe((result) => {
+            this.data = result;
             Object.keys(this.data).forEach((key) => {
                 this.data[key].forEach((item) => {
                     item.years = Math.ceil(item.months / 12);
                 });
             });
             this.setList(this.category);
-        }
+        });
     }
 
     clearFilter() {

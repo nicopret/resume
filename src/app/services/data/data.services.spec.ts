@@ -3,6 +3,7 @@ import { DataService } from './data.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ApiService } from '../api/api.service';
 import { ExpectedConditions } from 'protractor';
+import { ArrayUtilService } from '../util/arrayUtil.service';
 
 describe('Data service', () => {
 
@@ -35,7 +36,7 @@ describe('Data service', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [ HttpClientTestingModule ],
-            providers: [ ApiService, DataService ]
+            providers: [ ApiService, ArrayUtilService, DataService ]
         }).compileComponents();
 
         httpTestingController = TestBed.get(HttpTestingController);

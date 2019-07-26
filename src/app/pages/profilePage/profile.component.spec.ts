@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile.component';
 import { DataService } from 'src/app/services/data/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api/api.service';
+import { ArrayUtilService } from 'src/app/services/util/arrayUtil.service';
 
 describe('Profile Component', () => {
 
@@ -14,7 +15,7 @@ describe('Profile Component', () => {
         TestBed.configureTestingModule({
             imports: [ RouterTestingModule, HttpClientModule ],
             declarations: [ ProfileComponent ],
-            providers: [ ApiService, DataService ]
+            providers: [ ApiService, ArrayUtilService, DataService ]
         }).compileComponents();
 
         component = TestBed.createComponent(ProfileComponent).componentInstance;

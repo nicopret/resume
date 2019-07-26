@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
+
 import { ApiService } from '../api/api.service';
+import { ArrayUtilService } from '../util/arrayUtil.service';
 
 @Injectable()
 export class DataService {
@@ -10,13 +11,15 @@ export class DataService {
     educationData;
     originalData;
     profileData;
+    skillsData;
 
     careerSubject = new Subject();
     educationSubject = new Subject();
     profileSubject = new Subject();
+    skillsSubject = new Subject();
     workSubject = new Subject();
 
-    constructor(private api: ApiService, private http: HttpClient) {}
+    constructor(private api: ApiService, private arrayUtil: ArrayUtilService ) {}
 
     clearFilter() {
         this.setCareer(this.originalData.careers);
@@ -71,6 +74,8 @@ export class DataService {
     setCareer(input) {
         this.carreerData = input;
         this.careerSubject.next(this.carreerData);
+        this.skillsData = this.setSkills();
+        this.skillsSubject.next(this.skillsData);
     }
 
     setEducation(input) {
@@ -88,5 +93,17 @@ export class DataService {
     setProfile(input) {
         this.profileData = input;
         this.profileSubject.next(this.profileData);
+    }
+
+    setSkills() {
+        return this.carreerData.reduce((res, item) => {
+            res.industries = this.arrayUtil.validItem(res.industries, item.industry, item.months);
+            res.project = this.arrayUtil.populateArray(res.project, this.arrayUtil.validCategories(item.projects, 'project'), item.months);
+            res.services = this.arrayUtil.populateArray(res.services,
+                this.arrayUtil.validCategories(item.projects, 'services'), item.months);
+            res.technologies = this.arrayUtil.populateArray(res.technologies,
+                this.arrayUtil.validCategories(item.projects, 'technologies'), item.months);
+            return res;
+        }, { industries: [], project: [], services: [], technologies: []});
     }
 }

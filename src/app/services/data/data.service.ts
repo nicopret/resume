@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 
 import { ApiService } from '../api/api.service';
 import { ArrayUtilService } from '../util/arrayUtil.service';
+import { DateUtilService } from '../util/dateUtil.service';
 
 @Injectable()
 export class DataService {
@@ -19,7 +20,7 @@ export class DataService {
     skillsSubject = new Subject();
     workSubject = new Subject();
 
-    constructor(private api: ApiService, private arrayUtil: ArrayUtilService ) {}
+    constructor(private api: ApiService, private arrayUtil: ArrayUtilService, private dateUtil: DateUtilService ) {}
 
     clearFilter() {
         this.setCareer(this.originalData.careers);
@@ -85,7 +86,12 @@ export class DataService {
 
     setOriginalData(input) {
         this.originalData = input;
-        this.setCareer(input.careers);
+        this.setCareer(input.careers.map((item) => {
+            item.dateEnd = item.dateEnd ? this.dateUtil.calculateDate(item.dateEnd) : new Date();
+            item.dateStart = item.dateStart ? this.dateUtil.calculateDate(item.dateStart) : new Date();
+            item.months = this.dateUtil.calculateMonths(item.dateStart, item.dateEnd);
+            return item;
+        }));
         this.setEducation(input.education);
         this.setProfile(input.profile);
     }

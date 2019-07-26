@@ -5,6 +5,7 @@ import { DataService } from 'src/app/services/data/data.service';
 import { ApiService } from 'src/app/services/api/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ArrayUtilService } from 'src/app/services/util/arrayUtil.service';
+import { DateUtilService } from 'src/app/services/util/dateUtil.service';
 
 describe('Education Component', () => {
 
@@ -16,7 +17,7 @@ describe('Education Component', () => {
         TestBed.configureTestingModule({
             imports: [ RouterTestingModule, HttpClientModule ],
             declarations: [ EducationComponent ],
-            providers: [ ApiService, ArrayUtilService, DataService ]
+            providers: [ ApiService, ArrayUtilService, DataService, DateUtilService ]
         }).compileComponents();
 
         component = TestBed.createComponent(EducationComponent).componentInstance;

@@ -5,6 +5,7 @@ import { DataService } from 'src/app/services/data/data.service';
 import { ApiService } from 'src/app/services/api/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ArrayUtilService } from 'src/app/services/util/arrayUtil.service';
+import { DateUtilService } from 'src/app/services/util/dateUtil.service';
 
 describe('Skills Component', () => {
 
@@ -16,7 +17,7 @@ describe('Skills Component', () => {
             declarations: [
                 SkillsComponent
             ],
-            providers: [ ApiService, ArrayUtilService, DataService ]
+            providers: [ ApiService, ArrayUtilService, DataService, DateUtilService ]
         }).compileComponents();
     }));
 

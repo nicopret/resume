@@ -47,7 +47,6 @@ export class DashboardComponent implements OnInit {
     clearFilter() {
         this.currentSkill = '';
         this.filterEnable = false;
-//        this.original.careers.forEach((item) => item.detail = false);
         this.populateData(this.original);
     }
 
@@ -77,16 +76,6 @@ export class DashboardComponent implements OnInit {
         this.category = item.category;
         this.currentSkill = item.skill;
         this.filterEnable = true;
-        /*
-        const careers = JSON.parse(JSON.stringify(this.original.careers)).reduce((array, career) => {
-            if (this._validItem(career, item.category, item.skill)) {
-                career.detail = true;
-                array.push(career);
-            }
-            return array;
-        }, []);
-        this.populateData({ careers });
-        */
     }
 
     async populateData(data) {
@@ -111,15 +100,6 @@ export class DashboardComponent implements OnInit {
         ];
     }
 
-    private _calcDate(dateString) {
-        const dateArray = dateString.split('-');
-        return new Date(dateArray[0], parseInt(dateArray[1]) - 1, dateArray[2]);
-    }
-
-    private _calcMonths(start: Date, end: Date) {
-        return ((end.getFullYear() - start.getFullYear()) * 12) + (end.getMonth() - start.getMonth()) + 1;
-    }
-
     private _populateArray(array, skills, value) {
         if (!skills) {
             return array;
@@ -128,18 +108,6 @@ export class DashboardComponent implements OnInit {
             array = this._populateItem(array, skill, value);
         });
         return array;
-    }
-
-    private async _populateCareers(array) {
-        return array ? array.map((item) => {
-            if (!item.months) {
-                item.dateEnd = item.dateEnd ? this._calcDate(item.dateEnd) : new Date();
-                item.dateStart = item.dateStart ? this._calcDate(item.dateStart) : new Date();
-                item.months = this._calcMonths(item.dateStart, item.dateEnd);
-            }
-            item.detail = item.detail ? item.detail : false;
-            return item;
-        }) : [];
     }
 
     private _populateItem(array: any[], skill, value) {
@@ -189,32 +157,5 @@ export class DashboardComponent implements OnInit {
             value: years > 0 ? years : 'No'
         };
     };
-
-    private _validItem(item, category, skill) {
-        if (category === 'industries') {
-            return item.industry === skill;
-        }
-        let result = false;
-        if (item.projects) {
-            item.projects.forEach((project) => {
-                if (project[category] && project[category].indexOf(skill) > -1) {
-                    result = true;
-                }
-            })
-        }
-        return result;
-    }
-
-    private _validSkill(course, skill) {
-        let valid = false;
-        if (course.skills) {
-            course.skills.forEach((it) => {
-                if (it.skill === skill) {
-                    valid = true;
-                }
-            });
-        }
-        return valid;
-    }
 
 }

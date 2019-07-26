@@ -20,6 +20,7 @@ export class DataService {
 
     careerSubject = new Subject();
     educationSubject = new Subject();
+    filterEnableSubject = new Subject();
     profileSubject = new Subject();
     skillsSubject = new Subject();
     statsSubject = new Subject();
@@ -32,6 +33,7 @@ export class DataService {
         this.setCareer(this.originalData.careers);
         this.currentSkill = '';
         this.filterEnable = false;
+        this.filterEnableSubject.next(this.filterEnable);
     }
 
     init(): Observable<any> {
@@ -58,6 +60,7 @@ export class DataService {
         this.setCareer(this.filterCareer(filter));
         this.currentSkill = filter.skill;
         this.filterEnable = true;
+        this.filterEnableSubject.next(this.filterEnable);
     }
 
     filterSkills(array, category, skill) {

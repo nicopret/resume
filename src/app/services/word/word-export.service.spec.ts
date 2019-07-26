@@ -3,6 +3,7 @@ import { WordExportService } from './word-export.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DataService } from '../data/data.service';
 import { ApiService } from '../api/api.service';
+import { ArrayUtilService } from '../util/arrayUtil.service';
 
 describe('Word export service', () => {
 
@@ -12,7 +13,7 @@ describe('Word export service', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [ HttpClientTestingModule ],
-            providers: [ ApiService, DataService, WordExportService ]
+            providers: [ ApiService, ArrayUtilService, DataService, WordExportService ]
         }).compileComponents();
 
         dataService = TestBed.get(DataService);

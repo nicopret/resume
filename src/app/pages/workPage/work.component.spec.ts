@@ -4,6 +4,7 @@ import { WorkComponent } from './work.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api/api.service';
 import { DataService } from 'src/app/services/data/data.service';
+import { ArrayUtilService } from 'src/app/services/util/arrayUtil.service';
 
 describe('Work Component', () => {
 
@@ -15,7 +16,7 @@ describe('Work Component', () => {
         TestBed.configureTestingModule({
             imports: [ RouterTestingModule, HttpClientModule ],
             declarations: [ WorkComponent ],
-            providers: [ ApiService, DataService]
+            providers: [ ApiService, ArrayUtilService, DataService]
         }).compileComponents();
 
         component = TestBed.createComponent(WorkComponent).componentInstance;

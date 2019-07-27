@@ -39,15 +39,8 @@ export class DashboardComponent implements OnInit {
     loadData() {
         this.dataService.init().subscribe((response: any) => {
             this.original = response;
-            this.populateData(response);
             this.dataService.setOriginalData(response);
         });
-    }
-
-    clearFilter() {
-        this.currentSkill = '';
-        this.filterEnable = false;
-        this.populateData(this.original);
     }
 
     close() {
@@ -67,95 +60,7 @@ export class DashboardComponent implements OnInit {
 
     export(input) {
         this.showWordRenderModal = input;
-        this.wordExport.createDoc({ filter: this.currentSkill,
-            introduction: this.original.introduction, skills: this.skills, summary: this.original.summary },
-            this.wordRenderOptions);
+        this.wordExport.createDoc(this.dataService.currentSkill, this.wordRenderOptions);
     }
-
-    filter(item) {
-        this.category = item.category;
-        this.currentSkill = item.skill;
-        this.filterEnable = true;
-    }
-
-    async populateData(data) {
-//        this.careers = await this._populateCareers(data.careers);
-        this.skills = this.careers.reduce((res, item) => {
-            res.industries = this._populateItem(res.industries, item.industry, item.months);
-            res.project = this._populateArray(res.project, this._reduceCategories(item.projects, 'project'), item.months);
-            res.services = this._populateArray(res.services, this._reduceCategories(item.projects, 'services'), item.months);
-            res.technologies = this._populateArray(res.technologies, this._reduceCategories(item.projects, 'technologies'), item.months);
-            return res;
-        }, { industries: [], project: [], services: [], technologies: []});
-        this.stats = [
-            this._statsYears(this.careers ? Math.floor(this.careers.reduce((sum, item) => {
-                sum += item.months;
-                return sum;
-            }, 0) / 12) : 0),
-            this._statsCourses(this.education),
-            this._statsProjects(this.careers ? this.careers.reduce((sum, item) => {
-                sum += item.projects ? item.projects.length : 0;
-                return sum;
-            }, 0) : 0)
-        ];
-    }
-
-    private _populateArray(array, skills, value) {
-        if (!skills) {
-            return array;
-        }
-        skills.forEach((skill) => {
-            array = this._populateItem(array, skill, value);
-        });
-        return array;
-    }
-
-    private _populateItem(array: any[], skill, value) {
-        if (!skill) {
-            return array;
-        }
-        let item: any = array.find((item: any) => item.name === skill);
-        item ? item.months += value : array.push({ name: skill, months: value });
-        return array;
-    }
-
-    private _reduceCategories(array, key) {
-        if (!array) {
-            return [];
-        }
-        return array.filter((item) => item[key]).map((item) => item[key]).flat().reduce((res, item) => {
-            if (res.indexOf(item) < 0) {
-                res.push(item);
-            }
-            return res;
-        }, []);
-    }
-
-    private _statsCourses(array) {
-        return {
-            description: array.length === 0 ? 'Maybe soon.' : array.length > 1 ? 'Distance learning' : `Through ${array[0].institution}`,
-            metric: array.length === 0 ? 'No formal courses' : array.length > 1 ? 'Courses' : 'Course',
-            type: 'secondary',
-            value: array.length > 0 ? array.length : ''
-        };
-    };
-
-    private _statsProjects(years) {
-        return {
-            description: years > 0 ? 'Successfully delivered' : 'But hopefully soon',
-            metric: years === 0 ? 'No projects yet' : years > 1 ? 'Projects' : 'Project',
-            type: 'success',
-            value: years > 0 ? years : ''
-        };
-    };
-
-    private _statsYears(years) {
-        return {
-            description: this.filterEnable ? `${this.currentSkill} experience` : 'Total work experience',
-            metric: years === 0 ? '' : years > 1 ? 'Years' : 'Year',
-            type: 'info',
-            value: years > 0 ? years : 'No'
-        };
-    };
 
 }

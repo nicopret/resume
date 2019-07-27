@@ -29,10 +29,10 @@ export class DataService {
     constructor(private api: ApiService, private arrayUtil: ArrayUtilService, private dateUtil: DateUtilService ) {}
 
     clearFilter() {
-        this.setEducation(this.originalData.education);
-        this.setCareer(this.originalData.careers);
         this.currentSkill = '';
         this.filterEnable = false;
+        this.setEducation(this.originalData.education);
+        this.setCareer(this.originalData.careers);
         this.filterEnableSubject.next(this.filterEnable);
     }
 
@@ -56,10 +56,10 @@ export class DataService {
     }
 
     filterData(filter) {
-        this.setEducation(this.filterSkills(this.filterValidArray(this.originalData.education, 'skills'), filter.category, filter.skill));
-        this.setCareer(this.filterCareer(filter));
         this.currentSkill = filter.skill;
         this.filterEnable = true;
+        this.setEducation(this.filterSkills(this.filterValidArray(this.originalData.education, 'skills'), filter.category, filter.skill));
+        this.setCareer(this.filterCareer(filter));
         this.filterEnableSubject.next(this.filterEnable);
     }
 
@@ -132,7 +132,7 @@ export class DataService {
 
     setStats() {
         return [
-            this.dateUtil.displayYearString(this.carreerData ? Math.floor(this.carreerData.reduce((sum, item) => {
+            this.dateUtil.displayYearString(this.carreerData ? Math.round(this.carreerData.reduce((sum, item) => {
                 sum += item.months;
                 return sum;
             }, 0) / 12) : 0, this.filterEnable, this.currentSkill),

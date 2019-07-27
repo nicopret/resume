@@ -16,10 +16,10 @@ export class WordExportService {
 
     constructor(private apiService: ApiService, private dataService: DataService, private http: HttpClient) {}
 
-    async createDoc(data: any, options) {
+    async createDoc(filter, options) {
         const { careers, education, introduction, profile, skills, summary } = this.dataService.getData();
 
-        const fileName = `Resume for ${profile.fullName}${data.filter.length ? ' - ' + data.filter + ' experience' : ''}.doc`;
+        const fileName = `Resume for ${profile.fullName}${filter.length ? ' - ' + filter + ' experience' : ''}.doc`;
 
         const document = await this.initDocument(this.http, 'template.docx');
 
@@ -31,9 +31,9 @@ export class WordExportService {
             }),
             contact: profile.contact,
             education,
-            filter: data.filter.length ? data.filter : '',
+            filter: filter.length ? filter : '',
             full_name: profile.fullName,
-            hasFilter: data.filter.length > 0,
+            hasFilter: filter.length > 0,
             image: 'profile.jpg',
             introduction: introduction,
             skills: Object.keys(skills).reduce((array, key) => array.concat(skills[key]), [])

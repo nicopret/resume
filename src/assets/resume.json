@@ -1,7 +1,13 @@
 {
     "careers": [{
+        "company": "Credit Karma",
+        "dateStart": "2019-11-01",
+        "industry": "Fintech",
+        "position": "Senior Software Engineer"
+    }, {
         "company": "PBT Group",
         "dateStart": "2017-03-01",
+        "dateEnd": "2019-10-31",
         "industry": "Banking",
         "position": "Senior Development Lead",
         "projects": [{
